@@ -1,13 +1,133 @@
-/* CSS personalizado do projeto GoGym */
+/* ============================================================
+   STYLE.CSS — Estilos personalizados do projeto GoGym
+   Inspirado em:
+   - Fundo escuro
+   - Destaques em amarelo
+   - Layout moderno
+   ============================================================ */
 
-/* Exemplo de cor inspirada no GoGym */
+/* Fundo geral escuro e texto claro */
 body {
-	background-color: #111;
-	color: white;
+    background-color: #111111;
+    color: #f5f5f5;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
 
-/* Ajustes ao menu */
-.navbar-brand {
-	font-weight: bold;
-	color: #f7d708 !important; /* Amarelo GoGym */
+/* Links */
+a {
+    text-decoration: none;
 }
+
+/* Navbar */
+.navbar {
+    background-color: #000 !important;
+}
+
+.navbar-brand {
+    font-weight: 700;
+    color: #f7d708 !important; /* Amarelo GoGym */
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.nav-link {
+    color: #f5f5f5 !important;
+    font-weight: 500;
+}
+
+.nav-link:hover {
+    color: #f7d708 !important;
+}
+
+/* Títulos principais */
+h1, h2, h3, h4 {
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Carousel: escurecer um pouco a imagem para legibilidade do texto */
+.carousel-item img {
+    max-height: 520px;
+    object-fit: cover;
+    filter: brightness(0.7);
+}
+
+/* Texto do carousel */
+.carousel-caption h5 {
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.carousel-caption p {
+    font-size: 1.1rem;
+}
+
+/* Cards dos serviços e admin */
+.card {
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.card img {
+    height: 180px;
+    object-fit: cover;
+}
+
+.card-title {
+    font-weight: 600;
+}
+
+.card-text {
+    font-size: 0.95rem;
+}
+
+/* Botões principais */
+.btn-warning {
+    background-color: #f7d708;
+    border-color: #f7d708;
+    color: #111;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.btn-warning:hover {
+    background-color: #e6c307;
+    border-color: #e6c307;
+    color: #000;
+}
+
+/* Botões secundários */
+.btn-outline-light {
+    border-width: 2px;
+}
+
+/* Tabelas no admin e gallery */
+.table {
+    font-size: 0.9rem;
+}
+
+.table thead tr th {
+    text-transform: uppercase;
+}
+
+/* Formulários escuros */
+form.bg-dark {
+    border: 1px solid #333;
+}
+
+/* Footer */
+footer {
+    font-size: 0.85rem;
+}
+
+/* Espaçamento geral entre secções */
+.container {
+    margin-bottom: 40px;
+}
+
+/* Imagens em secções About / Contact */
+.img-fluid.rounded.shadow {
+    border: 2px solid #222;
+}
+
+/* Mensagens de alerta centralizadas já estão boas via Bootstrap */
