@@ -51,7 +51,8 @@ include 'includes/header.php';
                     <div class="carousel-inner">
                         <!-- Slide 1 -->
                         <div class="carousel-item active">
-                            <img src="https://images.pexels.com/photos/1552242/pexels-photo-1552242.jpeg" class="d-block w-100" alt="Ginásio 1">
+                            <!-- Imagem externa do Pexels com parâmetros de qualidade e proporção -->
+                            <img src="https://images.pexels.com/photos/1552242/pexels-photo-1552242.jpeg?auto=compress&fit=crop&w=900&q=80" class="d-block w-100" alt="Ginásio 1" style="object-fit:cover; height:400px;">
                             <div class="carousel-caption d-none d-md-block">
                                 <h5>Treina com Energia</h5>
                                 <p>Equipamentos modernos e ambiente motivador.</p>
@@ -59,7 +60,7 @@ include 'includes/header.php';
                         </div>
                         <!-- Slide 2 -->
                         <div class="carousel-item">
-                            <img src="https://images.pexels.com/photos/1954524/pexels-photo-1954524.jpeg" class="d-block w-100" alt="Aulas de Grupo">
+                            <img src="https://images.pexels.com/photos/1954524/pexels-photo-1954524.jpeg?auto=compress&fit=crop&w=900&q=80" class="d-block w-100" alt="Aulas de Grupo" style="object-fit:cover; height:400px;">
                             <div class="carousel-caption d-none d-md-block">
                                 <h5>Aulas de Grupo</h5>
                                 <p>CrossFit, Cycling, Yoga e muito mais.</p>
@@ -67,7 +68,7 @@ include 'includes/header.php';
                         </div>
                         <!-- Slide 3 -->
                         <div class="carousel-item">
-                            <img src="https://images.pexels.com/photos/3823039/pexels-photo-3823039.jpeg" class="d-block w-100" alt="Personal Trainer">
+                            <img src="https://images.pexels.com/photos/3823039/pexels-photo-3823039.jpeg?auto=compress&fit=crop&w=900&q=80" class="d-block w-100" alt="Personal Trainer" style="object-fit:cover; height:400px;">
                             <div class="carousel-caption d-none d-md-block">
                                 <h5>Personal Trainers</h5>
                                 <p>Planos personalizados para os teus objetivos.</p>
@@ -75,7 +76,7 @@ include 'includes/header.php';
                         </div>
                         <!-- Slide 4 -->
                         <div class="carousel-item">
-                            <img src="https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg" class="d-block w-100" alt="Nutrição">
+                            <img src="https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&fit=crop&w=900&q=80" class="d-block w-100" alt="Nutrição" style="object-fit:cover; height:400px;">
                             <div class="carousel-caption d-none d-md-block">
                                 <h5>Nutrição e Saúde</h5>
                                 <p>Acompanhamento completo para melhores resultados.</p>
@@ -103,8 +104,8 @@ include 'includes/header.php';
                         <!-- CARD 1: Musculação -->
                         <div class="col-md-3">
                             <div class="card bg-dark text-white h-100">
-                                <!-- Imagem externa de musculação -->
-                                <img src="https://images.pexels.com/photos/1552242/pexels-photo-1552242.jpeg" class="card-img-top" alt="Musculação">
+                                <!-- Imagem externa de musculação com parâmetros de qualidade e proporção -->
+                                <img src="https://images.pexels.com/photos/1552242/pexels-photo-1552242.jpeg?auto=compress&fit=crop&w=400&q=80" class="card-img-top" alt="Musculação" style="object-fit:cover; height:220px;">
                                 <div class="card-body">
                                     <h5 class="card-title">Musculação</h5>
                                     <p class="card-text">Equipamentos modernos para treinos completos.</p>
@@ -120,7 +121,7 @@ include 'includes/header.php';
                         <!-- CARD 2: Aulas de Grupo -->
                         <div class="col-md-3">
                             <div class="card bg-dark text-white h-100">
-                                <img src="https://images.pexels.com/photos/1954524/pexels-photo-1954524.jpeg" class="card-img-top" alt="Aulas de Grupo">
+                                <img src="https://images.pexels.com/photos/1954524/pexels-photo-1954524.jpeg?auto=compress&fit=crop&w=400&q=80" class="card-img-top" alt="Aulas de Grupo" style="object-fit:cover; height:220px;">
                                 <div class="card-body">
                                     <h5 class="card-title">Aulas de Grupo</h5>
                                     <p class="card-text">CrossFit, Cycling, Yoga e muito mais.</p>
@@ -133,7 +134,7 @@ include 'includes/header.php';
                         <!-- CARD 3: Personal Trainer -->
                         <div class="col-md-3">
                             <div class="card bg-dark text-white h-100">
-                                <img src="https://images.pexels.com/photos/3823039/pexels-photo-3823039.jpeg" class="card-img-top" alt="Personal Trainer">
+                                <img src="https://images.pexels.com/photos/3823039/pexels-photo-3823039.jpeg?auto=compress&fit=crop&w=400&q=80" class="card-img-top" alt="Personal Trainer" style="object-fit:cover; height:220px;">
                                 <div class="card-body">
                                     <h5 class="card-title">Personal Trainer</h5>
                                     <p class="card-text">Acompanhamento individualizado.</p>
@@ -146,7 +147,7 @@ include 'includes/header.php';
                         <!-- CARD 4: Nutrição -->
                         <div class="col-md-3">
                             <div class="card bg-dark text-white h-100">
-                                <img src="https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg" class="card-img-top" alt="Nutrição">
+                                <img src="https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&fit=crop&w=400&q=80" class="card-img-top" alt="Nutrição" style="object-fit:cover; height:220px;">
                                 <div class="card-body">
                                     <h5 class="card-title">Nutrição</h5>
                                     <p class="card-text">Planos alimentares completos.</p>
