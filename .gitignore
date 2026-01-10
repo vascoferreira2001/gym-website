@@ -1,0 +1,6 @@
+# Ignorar arquivos e pastas comuns
+/node_modules/
+/vendor/
+.env
+.DS_Store
+*.log
