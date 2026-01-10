@@ -1,5 +1,5 @@
 -- ============================================================
--- INSERIR UTILIZADOR ADMINISTRADOR (Gestor Principal)
+-- INSERIR UTILIZADOR ADMINISTRADOR (Gestor Principal - Maia GYM)
 -- ============================================================
 
 INSERT INTO users (name, email, password, role)

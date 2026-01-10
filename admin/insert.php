@@ -1,7 +1,7 @@
 <?php
 /**
  * ============================================================
- * ADMIN/INSERT.PHP — Inserir Nova Aula (Tabela: classes)
+ * ADMIN/INSERT.PHP — Inserir Nova Aula (Tabela: classes, Maia GYM)
  *
  * OBJETIVO:
  * - Apresentar um formulário para criar uma nova aula

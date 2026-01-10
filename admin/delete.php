@@ -1,7 +1,7 @@
 <?php
 /**
  * ============================================================
- * ADMIN/DELETE.PHP — Eliminar Registos
+ * ADMIN/DELETE.PHP — Eliminar Registos (Maia GYM)
  *
  * OBJETIVO:
  * - Eliminar registos de diferentes tabelas, dependendo do "type":

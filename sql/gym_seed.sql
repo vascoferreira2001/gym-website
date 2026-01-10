@@ -1,5 +1,5 @@
 -- ============================================================
--- DADOS DE EXEMPLO PARA O PROJETO GOGYM
+-- DADOS DE EXEMPLO PARA O PROJETO MAIA GYM
 -- Este ficheiro insere registos de teste nas tabelas:
 -- - classes
 -- - bookings

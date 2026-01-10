@@ -1,7 +1,7 @@
 <?php
 /**
  * ============================================================
- * LIST.PHP — Página de listagem dinâmica (Admin)
+ * ADMIN/LIST.PHP — Página de listagem dinâmica (Admin, Maia GYM)
  *
  * Esta página lista:
  * - Aulas (classes)
@@ -14,7 +14,7 @@
  *   list.php?type=contacts
  *
  * O objetivo é ter uma única página capaz de listar diferentes
- * tipos de dados, evitando duplicação de código.
+ * tipos de dados do Maia GYM, evitando duplicação de código.
  * ============================================================
  */
 

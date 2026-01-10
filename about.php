@@ -1,10 +1,10 @@
 <?php
 /**
  * ============================================================
- * ABOUT.PHP — Página "Sobre Nós"
+ * ABOUT.PHP — Página "Sobre Nós" (Maia GYM)
  *
  * Esta página apresenta:
- * - Texto institucional sobre o ginásio
+ * - Texto institucional sobre o ginásio Maia GYM
  * - Imagens ilustrativas
  * - Botão para navegar para a página Contact
  *

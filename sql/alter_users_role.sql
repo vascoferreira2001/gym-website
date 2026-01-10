@@ -1,6 +1,6 @@
 -- ============================================================
 -- ALTERAÇÃO DA TABELA USERS: Adicionar/alterar coluna 'role'
--- Agora com ENUM para diferentes tipos de utilizador
+-- Agora com ENUM para diferentes tipos de utilizador (Maia GYM)
 -- ============================================================
 
 ALTER TABLE users

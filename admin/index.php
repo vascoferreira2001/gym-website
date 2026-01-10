@@ -1,9 +1,9 @@
 <?php
 /**
  * ============================================================
- * ADMIN/INDEX.PHP — Painel Principal do Administrador
+ * ADMIN/INDEX.PHP — Painel Principal do Administrador (Maia GYM)
  *
- * Esta página funciona como o "dashboard" do administrador.
+ * Esta página funciona como o "dashboard" do administrador do Maia GYM.
  * Aqui o admin pode navegar para:
  * - Gestão de Aulas (CRUD)
  * - Gestão de Marcações (CRUD)

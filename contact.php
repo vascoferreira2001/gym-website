@@ -1,7 +1,7 @@
 <?php
 /**
  * ============================================================
- * CONTACT.PHP — Página de Contacto
+ * CONTACT.PHP — Página de Contacto (Maia GYM)
  *
  * Esta página:
  * - Apresenta um formulário para o utilizador enviar uma mensagem
@@ -9,7 +9,7 @@
  * - Mostra mensagens de sucesso ou erro
  *
  * O objetivo é permitir que os utilizadores entrem em contacto
- * com o ginásio de forma simples e rápida.
+ * com o ginásio Maia GYM de forma simples e rápida.
  * ============================================================
  */
 

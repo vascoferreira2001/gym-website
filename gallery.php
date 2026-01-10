@@ -1,10 +1,10 @@
 <?php
 /**
  * ============================================================
- * GALLERY.PHP — Página de Galeria de Imagens
+ * GALLERY.PHP — Página de Galeria de Imagens (Maia GYM)
  *
  * Esta página apresenta:
- * - Uma tabela responsiva com imagens do ginásio
+ * - Uma tabela responsiva com imagens do ginásio Maia GYM
  * - Layout simples e elegante usando Bootstrap
  * - Imagens externas temporárias (Pexels)
  *
