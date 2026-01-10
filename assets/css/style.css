@@ -1,1 +1,13 @@
-body { font-family: Arial, sans-serif; }
+/* CSS personalizado do projeto GoGym */
+
+/* Exemplo de cor inspirada no GoGym */
+body {
+	background-color: #111;
+	color: white;
+}
+
+/* Ajustes ao menu */
+.navbar-brand {
+	font-weight: bold;
+	color: #f7d708 !important; /* Amarelo GoGym */
+}
