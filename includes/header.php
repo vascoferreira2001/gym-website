@@ -1,8 +1,8 @@
 <?php
 /**
  * HEADER GLOBAL DO SITE
- * Este ficheiro é incluído em todas as páginas para evitar repetição de código.
- * Contém o menu e o carregamento do Bootstrap.
+ * Layout premium inspirado em FitnessUp
+ * Inclui navbar responsiva e moderna
  */
 ?>
 <!DOCTYPE html>
@@ -13,40 +13,35 @@
   <title>Maia GYM - Ginásio</title>
   <!-- Bootstrap 5 CSS via CDN -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
-  <!-- CSS personalizado do projeto (caminho absoluto para evitar erros de includes) -->
+  <!-- CSS personalizado do projeto -->
   <link rel="stylesheet" href="/assets/css/style.css">
 </head>
 <body>
 
-<!-- ============================================================
-     MENU DE NAVEGAÇÃO GLOBAL
-     O menu é responsivo e usa classes Bootstrap para visual moderno.
-     ============================================================ -->
-<?php if (!isset($_SESSION)) session_start(); ?>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<!-- NAVBAR MODERNA E RESPONSIVA -->
+<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm py-3">
   <div class="container">
-    <!-- Logo/Brand do ginásio -->
-    <a class="navbar-brand" href="/index.php">Maia GYM</a>
+    <!-- Logotipo à esquerda -->
+    <a class="navbar-brand fw-bold text-uppercase" href="/index.php" style="color:#ff6633; letter-spacing:1px; font-size:2rem;">Maia GYM</a>
     <!-- Botão para menu mobile -->
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu" aria-controls="menu" aria-expanded="false" aria-label="Menu">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <!-- Itens do menu -->
-    <div class="collapse navbar-collapse" id="menu">
-      <ul class="navbar-nav ms-auto">
+    <!-- Itens do menu à direita -->
+    <div class="collapse navbar-collapse justify-content-end" id="menu">
+      <ul class="navbar-nav mb-2 mb-lg-0 align-items-lg-center gap-lg-3">
         <li class="nav-item"><a class="nav-link" href="/index.php">Início</a></li>
         <li class="nav-item"><a class="nav-link" href="/gallery.php">Galeria</a></li>
         <li class="nav-item"><a class="nav-link" href="/booking.php">Aulas</a></li>
         <li class="nav-item"><a class="nav-link" href="/about.php">Sobre Nós</a></li>
         <li class="nav-item"><a class="nav-link" href="/contact.php">Contacto</a></li>
         <!-- Bloco dinâmico de autenticação -->
+        <?php if (!isset($_SESSION)) session_start(); ?>
         <?php if (!isset($_SESSION['user_id'])): ?>
-            <!-- Utilizador não autenticado -->
             <li class="nav-item">
                 <a class="nav-link" href="/login.php">Login</a>
             </li>
         <?php else: ?>
-            <!-- Utilizador autenticado -->
             <li class="nav-item">
                 <span class="nav-link">Olá, <?= htmlspecialchars($_SESSION['user_name']) ?></span>
             </li>

@@ -1,18 +1,15 @@
 <?php
 /**
  * FOOTER GLOBAL DO SITE
- * Inclui scripts JS e o rodapé comum a todas as páginas.
+ * Layout premium, simples e elegante
  */
 ?>
-<footer class="bg-dark text-white text-center p-3 mt-5">
-    <p>© 2026 GoGym — Todos os direitos reservados.</p>
+<footer class="footer-main bg-white text-center p-4 mt-5 border-top">
+    <div class="container">
+        <span class="fw-bold" style="color:#ff6633;">Maia GYM</span> &copy; 2026 — Todos os direitos reservados.
+    </div>
 </footer>
-
-<!-- Bootstrap JS (CDN) -->
+<!-- Bootstrap 5 JS via CDN -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-
-<!-- JS personalizado -->
-<script src="assets/js/script.js"></script>
-
 </body>
 </html>

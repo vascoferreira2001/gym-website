@@ -1,9 +1,14 @@
 // JS personalizado do projeto GoGym
-// Aqui poderás adicionar efeitos, validações, etc.
+// Funções auxiliares e validação de formulários
 
 console.log("GoGym website carregado.");
 
-// Validação de formulários
+/**
+ * Valida os campos de um formulário de contacto.
+ * Adiciona classes de erro e devolve true/false.
+ * @param {HTMLFormElement} form
+ * @returns {boolean}
+ */
 function validateForm(form) {
     let valid = true;
     let messages = [];
@@ -37,39 +42,18 @@ function validateForm(form) {
     } else if (message) {
         message.classList.remove('is-invalid');
     }
-    // Descrição
+    // Descrição (opcional)
     var description = form.querySelector('[name="description"]');
-    if (description && typeof description.value === 'string' && description.value.trim().length < 10) {
+    if (description && typeof description.value === 'string' && description.value.trim().length < 5) {
         valid = false;
-        messages.push("A descrição deve ter pelo menos 10 caracteres.");
+        messages.push("A descrição deve ter pelo menos 5 caracteres.");
         description.classList.add('is-invalid');
     } else if (description) {
         description.classList.remove('is-invalid');
     }
-    // Horário
-    var schedule = form.querySelector('[name="schedule"]');
-    if (schedule && typeof schedule.value === 'string' && schedule.value.trim().length < 5) {
-        valid = false;
-        messages.push("O horário deve ser preenchido corretamente.");
-        schedule.classList.add('is-invalid');
-    } else if (schedule) {
-        schedule.classList.remove('is-invalid');
-    }
-    // URL da imagem
-    var image = form.querySelector('[name="image"]');
-    if (image && typeof image.value === 'string' && image.value.trim() !== "") {
-        try {
-            new URL(image.value.trim());
-            image.classList.remove('is-invalid');
-        } catch (e) {
-            valid = false;
-            messages.push("Insere um URL de imagem válido.");
-            image.classList.add('is-invalid');
-        }
-    }
-    // Feedback
+    // Mostra mensagens de erro (pode ser adaptado para mostrar no HTML)
     if (!valid) {
-        alert(messages.join('\n'));
+        alert(messages.join("\n"));
     }
     return valid;
 }
@@ -83,4 +67,54 @@ window.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
+});
+//
+// Comentário: Script para garantir que o carousel Bootstrap funciona corretamente
+// e ocupa toda a largura. Inicializa o carousel apenas via JS, com avanço automático a cada 15 segundos e controles ativos.
+// Adicionado logs para debug.
+document.addEventListener('DOMContentLoaded', function() {
+    var carousel = document.getElementById('mainCarousel');
+    if (!carousel) {
+        console.error('mainCarousel não encontrado no DOM');
+        return;
+    }
+    if (typeof bootstrap === 'undefined' || !bootstrap.Carousel) {
+        console.error('Bootstrap Carousel não está disponível. Verifique se o JS do Bootstrap foi carregado.');
+        return;
+    }
+    // Destroi instância anterior se existir
+    if (carousel.bsCarousel) {
+        carousel.bsCarousel.dispose();
+        console.log('Instância anterior do carousel destruída.');
+    }
+    // Cria nova instância do Bootstrap Carousel
+    var bsCarousel = new bootstrap.Carousel(carousel, {
+        interval: 15000, // 15 segundos
+        ride: 'carousel',
+        pause: false,
+        wrap: true
+    });
+    carousel.bsCarousel = bsCarousel;
+    console.log('Bootstrap Carousel inicializado com sucesso!', bsCarousel);
+    // Garante que os botões funcionam
+    var prevBtn = document.querySelector('.carousel-control-prev');
+    var nextBtn = document.querySelector('.carousel-control-next');
+    if (prevBtn) {
+        prevBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            bsCarousel.prev();
+            console.log('Botão anterior clicado.');
+        });
+    } else {
+        console.warn('Botão .carousel-control-prev não encontrado.');
+    }
+    if (nextBtn) {
+        nextBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            bsCarousel.next();
+            console.log('Botão seguinte clicado.');
+        });
+    } else {
+        console.warn('Botão .carousel-control-next não encontrado.');
+    }
 });

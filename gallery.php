@@ -20,86 +20,41 @@ include 'includes/header.php'; // Inclui o menu e o layout inicial
      TÍTULO DA PÁGINA
      ============================================================ -->
 <div class="container mt-5">
-    <h2 class="text-center mb-4">Galeria</h2>
+    <h2 class="text-center mb-4 fw-bold" style="color:#ff6633;">Galeria</h2>
 
     <!-- ============================================================
-         TABELA RESPONSIVA
-         A classe "table-responsive" permite scroll horizontal em ecrãs pequenos.
+         GALERIA DE IMAGENS
+         O layout premium apresenta as imagens em cartões elegantes.
          ============================================================ -->
-    <div class="table-responsive">
+    <div class="row g-4 justify-content-center">
 
-        <!-- Tabela Bootstrap -->
-        <table class="table table-dark table-bordered table-hover align-middle text-center">
+        <!-- Imagem 1 -->
+        <div class="col-md-4 col-12">
+            <div class="card shadow-sm border-0">
+                <img src="https://images.pexels.com/photos/3768913/pexels-photo-3768913.jpeg?auto=compress&fit=crop&w=600&q=80"
+                     class="card-img-top rounded"
+                     alt="Galeria Maia GYM">
+            </div>
+        </div>
 
-            <!-- Cabeçalho da tabela -->
-            <thead class="table-warning text-dark">
-                <tr>
-                    <th>Imagem</th>
-                    <th>Descrição</th>
-                </tr>
-            </thead>
+        <!-- Imagem 2 -->
+        <div class="col-md-4 col-12">
+            <div class="card shadow-sm border-0">
+                <img src="https://images.pexels.com/photos/3823039/pexels-photo-3823039.jpeg?auto=compress&fit=crop&w=600&q=80"
+                     class="card-img-top rounded"
+                     alt="Galeria Maia GYM">
+            </div>
+        </div>
 
-            <!-- Corpo da tabela -->
-            <tbody>
+        <!-- Imagem 3 -->
+        <div class="col-md-4 col-12">
+            <div class="card shadow-sm border-0">
+                <img src="https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&fit=crop&w=600&q=80"
+                     class="card-img-top rounded"
+                     alt="Galeria Maia GYM">
+            </div>
+        </div>
 
-                <!-- Linha 1 -->
-                <tr>
-                    <td>
-                        <!-- Imagem externa temporária -->
-                        <img src="https://images.pexels.com/photos/1954521/pexels-photo-1954521.jpeg"
-                             class="img-fluid rounded"
-                             style="max-width: 250px;"
-                             alt="Ginásio moderno">
-                    </td>
-                    <td>Área de musculação com equipamentos modernos.</td>
-                </tr>
-
-                <!-- Linha 2 -->
-                <tr>
-                    <td>
-                        <img src="https://images.pexels.com/photos/1552242/pexels-photo-1552242.jpeg"
-                             class="img-fluid rounded"
-                             style="max-width: 250px;"
-                             alt="Treino com pesos">
-                    </td>
-                    <td>Treinos de força com acompanhamento profissional.</td>
-                </tr>
-
-                <!-- Linha 3 -->
-                <tr>
-                    <td>
-                        <img src="https://images.pexels.com/photos/3823037/pexels-photo-3823037.jpeg"
-                             class="img-fluid rounded"
-                             style="max-width: 250px;"
-                             alt="Aulas de grupo">
-                    </td>
-                    <td>Aulas de grupo dinâmicas para todos os níveis.</td>
-                </tr>
-
-                <!-- Linha 4 -->
-                <tr>
-                    <td>
-                        <img src="https://images.pexels.com/photos/7676400/pexels-photo-7676400.jpeg"
-                             class="img-fluid rounded"
-                             style="max-width: 250px;"
-                             alt="Personal Trainer">
-                    </td>
-                    <td>Personal Trainers certificados para treinos personalizados.</td>
-                </tr>
-
-                <!-- Linha 5 -->
-                <tr>
-                    <td>
-                        <img src="https://images.pexels.com/photos/1640770/pexels-photo-1640770.jpeg"
-                             class="img-fluid rounded"
-                             style="max-width: 250px;"
-                             alt="Nutrição">
-                    </td>
-                    <td>Consultas de nutrição para otimizar resultados.</td>
-                </tr>
-
-            </tbody>
-        </table>
     </div>
 </div>
 

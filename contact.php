@@ -10,6 +10,8 @@
  *
  * O objetivo é permitir que os utilizadores entrem em contacto
  * com o ginásio Maia GYM de forma simples e rápida.
+ *
+ * Layout premium, moderno e responsivo
  * ============================================================
  */
 
@@ -42,70 +44,58 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     // Executar e verificar resultado
     if ($stmt->execute()) {
-        $successMessage = "A tua mensagem foi enviada com sucesso!";
+        $successMessage = "Mensagem enviada com sucesso!";
     } else {
-        $errorMessage = "Ocorreu um erro ao enviar a mensagem. Tenta novamente.";
+        $errorMessage = "Erro ao enviar mensagem.";
     }
 
     $stmt->close();
 }
-
 ?>
 
 <!-- ============================================================
-     SECÇÃO DO FORMULÁRIO DE CONTACTO
+     FORMULÁRIO DE CONTACTO
      ============================================================ -->
-<div class="container mt-5">
+<div class="container mt-5 mb-5">
 
-    <h2 class="text-center mb-4">Contacta-nos</h2>
+    <h2 class="text-center mb-4 fw-bold" style="color:#ff6633;">Contacte-nos</h2>
 
     <!-- Mensagens de feedback -->
     <?php if ($successMessage): ?>
         <div class="alert alert-success text-center">
             <?= $successMessage ?>
         </div>
-    <?php endif; ?>
-
-    <?php if ($errorMessage): ?>
+    <?php elseif ($errorMessage): ?>
         <div class="alert alert-danger text-center">
             <?= $errorMessage ?>
         </div>
     <?php endif; ?>
 
     <!-- Formulário -->
-    <form method="POST" class="bg-dark text-white p-4 rounded">
+    <form method="POST" class="mx-auto" style="max-width: 500px;">
 
         <!-- Nome -->
         <div class="mb-3">
-            <label class="form-label">Nome</label>
-            <input type="text" name="name" class="form-control" required>
+            <label for="name" class="form-label">Nome</label>
+            <input type="text" class="form-control" id="name" name="name" required>
         </div>
 
         <!-- Email -->
         <div class="mb-3">
-            <label class="form-label">Email</label>
-            <input type="email" name="email" class="form-control" required>
+            <label for="email" class="form-label">Email</label>
+            <input type="email" class="form-control" id="email" name="email" required>
         </div>
 
         <!-- Mensagem -->
         <div class="mb-3">
-            <label class="form-label">Mensagem</label>
-            <textarea name="message" class="form-control" rows="4" required></textarea>
+            <label for="message" class="form-label">Mensagem</label>
+            <textarea class="form-control" id="message" name="message" rows="4" required></textarea>
         </div>
 
         <!-- Botões -->
-        <button type="submit" class="btn btn-warning w-100 mb-2">Enviar</button>
-        <button type="reset" class="btn btn-outline-light w-100">Limpar</button>
+        <button type="submit" class="btn btn-warning w-100 fw-bold" style="background:#ff6633; border:none;">Enviar</button>
 
     </form>
-
-    <!-- Imagem ilustrativa (opcional) -->
-    <div class="text-center mt-4">
-        <img src="https://images.pexels.com/photos/1552249/pexels-photo-1552249.jpeg"
-             class="img-fluid rounded shadow"
-             style="max-width: 400px;"
-             alt="Contacto GoGym">
-    </div>
 
 </div>
 
