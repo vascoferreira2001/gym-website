@@ -68,7 +68,7 @@ include 'includes/header.php';
       </div>
       <!-- Imagem de destaque -->
       <div class="col-md-6 col-12 text-center">
-        <img src="https://images.pexels.com/photos/2261485/pexels-photo-2261485.jpeg?auto=compress&fit=crop&w=800&q=80" alt="Personal Trainer Inês Silva Maia GYM" class="img-fluid rounded-4 shadow" style="max-width: 480px;">
+        <img src="assets/images/PersonalTrainer-Ines.jpeg" alt="Personal Trainer Inês Silva Maia GYM" class="img-fluid rounded-4 shadow" style="max-width: 480px;">
       </div>
     </div>
   </div>
