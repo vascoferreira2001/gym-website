@@ -1,8 +1,20 @@
+
 <?php
-include '../includes/header.php';
+/**
+ * ============================================================
+ * PAGES/CONTACT.PHP — Página de Contactos (Maia GYM)
+ *
+ * Esta página apresenta um formulário de contacto simples (não funcional).
+ * Serve para fins de demonstração e estrutura académica.
+ * ============================================================
+ */
+
+include '../includes/header.php'; // Inclui o menu e o layout inicial
 ?>
 <main class="container mt-4">
+  <!-- Título da página -->
   <h2>Contactos</h2>
+  <!-- Formulário de contacto (apenas visual) -->
   <form>
     <div class="mb-3">
       <label for="name" class="form-label">Nome</label>
@@ -20,5 +32,5 @@ include '../includes/header.php';
   </form>
 </main>
 <?php
-include '../includes/footer.php';
+include '../includes/footer.php'; // Inclui o rodapé global
 ?>

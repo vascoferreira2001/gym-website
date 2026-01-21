@@ -53,7 +53,8 @@ gym-website/
 │
 └── sql/
     ├── gym_database.sql      # Criação das tabelas principais
-    └── insert_sample_data.sql # Dados de exemplo (seed)
+    ├── gym_seed.sql           # Dados de exemplo (seed)
+    └── insert_admin_user.sql  # Inserir utilizador administrador
 ```
 
 ## Como usar
@@ -61,8 +62,17 @@ gym-website/
 1. Edite os arquivos PHP, HTML, CSS e JavaScript conforme necessário.
 2. Utilize o Bootstrap para o layout e componentes visuais.
 3. Coloque imagens e outros recursos na pasta `assets`.
-4. Importe o arquivo `gym_database.sql` para criar as tabelas no MySQL.
-5. Edite o arquivo `db.php` com os dados da sua base de dados.
+4. Importe o arquivo `sql/gym_database.sql` para criar as tabelas no MySQL.
+5. Importe o arquivo `sql/gym_seed.sql` para inserir dados de exemplo.
+6. Importe o arquivo `sql/insert_admin_user.sql` para criar o utilizador administrador.
+7. Edite o arquivo `includes/db.php` com os dados da sua base de dados.
+
+
+## Credenciais de Teste
+
+- **Admin:**
+    - Email: `admin@gym.com`
+    - Password: `admin123`
 
 ## Requisitos
 
@@ -70,6 +80,7 @@ gym-website/
 - Servidor web com suporte a PHP e MySQL (ex: XAMPP, WAMP, LAMP).
 - Navegador moderno para visualização.
 
+
 ---
 
-> Substitua este README conforme o projeto evoluir.
+> Todo o código está comentado detalhadamente para facilitar a avaliação académica, conforme solicitado no enunciado do projeto.
