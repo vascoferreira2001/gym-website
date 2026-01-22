@@ -10,17 +10,17 @@ $loginError = "";
 $db_connected = (isset($conn) && $conn);
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $email    = $_POST['email'];
+    $user_input = trim($_POST['user_input']);
     $password = $_POST['password'];
     if ($db_connected) {
-        $sql = "SELECT * FROM users WHERE email = ?";
+        $sql = "SELECT * FROM users WHERE email = ? OR identifier = ?";
         $stmt = $conn->prepare($sql);
-        $stmt->bind_param("s", $email);
+        $stmt->bind_param("ss", $user_input, $user_input);
         $stmt->execute();
         $result = $stmt->get_result();
         if ($result->num_rows === 1) {
             $user = $result->fetch_assoc();
-            if ($user['password'] === hash('sha256', $password)) {
+            if (password_verify($password, $user['password']) || $user['password'] === hash('sha256', $password)) {
                 $_SESSION['user_id']   = $user['id'];
                 $_SESSION['user_name'] = $user['name'];
                 $_SESSION['user_role'] = $user['role'];
@@ -30,9 +30,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     case 'gestora_clientes':
                         header("Location: admin/list.php?type=bookings"); break;
                     case 'professor':
-                        header("Location: admin/list.php?type=classes"); break;
+                        header("Location: area-reservada/professor.php"); break;
                     case 'personal_trainer':
-                        header("Location: admin/list.php?type=bookings"); break;
+                        header("Location: area-reservada/professor.php"); break;
+                    case 'socio':
+                        header("Location: area-reservada/socio.php"); break;
                     case 'cliente':
                     default:
                         header("Location: index.php"); break;
@@ -42,7 +44,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $loginError = "Password incorreta.";
             }
         } else {
-            $loginError = "Email não encontrado.";
+            $loginError = "Identificador ou email não encontrado.";
         }
         $stmt->close();
     } else {
@@ -129,23 +131,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <?= $loginError ?>
       </div>
     <?php endif; ?>
-    <form method="POST" autocomplete="on">
-      <div class="mb-3">
-        <label class="form-label" for="login-email">Email</label>
-        <div class="input-group">
-          <span class="input-group-text"><i class="bi bi-person"></i></span>
-          <input type="email" name="email" id="login-email" class="form-control" required autocomplete="username">
-        </div>
-      </div>
-      <div class="mb-3">
-        <label class="form-label" for="login-password">Password</label>
-        <div class="input-group">
-          <span class="input-group-text"><i class="bi bi-lock"></i></span>
-          <input type="password" name="password" id="login-password" class="form-control" required autocomplete="current-password">
-        </div>
-      </div>
-      <button type="submit" class="btn btn-warning w-100">Entrar</button>
-    </form>
+        <form method="POST" autocomplete="on">
+            <div class="mb-3">
+                <label class="form-label" for="login-user-input">Identificador ou Email</label>
+                <div class="input-group">
+                    <span class="input-group-text"><i class="bi bi-person"></i></span>
+                    <input type="text" name="user_input" id="login-user-input" class="form-control" required autocomplete="username">
+                </div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="login-password">Password</label>
+                <div class="input-group">
+                    <span class="input-group-text"><i class="bi bi-lock"></i></span>
+                    <input type="password" name="password" id="login-password" class="form-control" required autocomplete="current-password">
+                </div>
+            </div>
+            <button type="submit" class="btn btn-warning w-100">Entrar</button>
+        </form>
   </div>
 </div>
 

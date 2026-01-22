@@ -1,11 +1,7 @@
 -- ============================================================
--- BASE DE DADOS COMPLETA: MAIA GYM
--- Inclui estrutura, alterações e dados de exemplo
--- ============================================================
 
--- CRIAR BASE DE DADOS
-CREATE DATABASE IF NOT EXISTS gym_db CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-USE gym_db;
+-- ALTERAÇÃO DA TABELA USERS: ENUM roles e novo campo identifier
+-- (Já incluído na criação da tabela acima)
 
 -- ============================================================
 -- TABELA: users
