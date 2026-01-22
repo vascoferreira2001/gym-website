@@ -1,122 +1,152 @@
 <?php
-/**
- * ============================================================
- * LOGIN.PHP — Página de Autenticação
- *
- * Esta página:
- * - Apresenta um formulário de login
- * - Valida credenciais na tabela "users"
- * - Cria sessão PHP
- * - Redireciona consoante o tipo de utilizador
- * ============================================================
- */
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 
-session_start();                // Iniciar sessão
-include 'includes/db.php';      // Ligação à BD
-include 'includes/header.php';  // Header global
+session_start();
+@include 'includes/db.php';
+include 'includes/header.php';
+$loginError = "";
+$db_connected = (isset($conn) && $conn);
 
-$loginError = "";               // Mensagem de erro (se existir)
-
-/**
- * ============================================================
- * PROCESSAMENTO DO FORMULÁRIO
- * ============================================================
- */
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-
-    // Recolher dados do formulário
     $email    = $_POST['email'];
     $password = $_POST['password'];
-
-    // Query para buscar utilizador pelo email
-    $sql = "SELECT * FROM users WHERE email = ?";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("s", $email);
-    $stmt->execute();
-
-    $result = $stmt->get_result();
-
-    // Verificar se o utilizador existe
-    if ($result->num_rows === 1) {
-
-        $user = $result->fetch_assoc();
-
-        // Verificar password encriptada
-        if ($user['password'] === hash('sha256', $password)) {
-
-            // Guardar dados na sessão
-            $_SESSION['user_id']   = $user['id'];
-            $_SESSION['user_name'] = $user['name'];
-            $_SESSION['user_role'] = $user['role'];
-
-            // ============================================================
-            // Redirecionamento do utilizador consoante o seu cargo (role)
-            // ============================================================
-            switch ($user['role']) {
-                case 'gestor_ginasio':
-                    // Gestor principal do ginásio: acesso ao dashboard admin
-                    header("Location: admin/index.php");
-                    break;
-                case 'gestora_clientes':
-                    // Gestora de clientes: acesso direto à gestão de marcações
-                    header("Location: admin/list.php?type=bookings");
-                    break;
-                case 'professor':
-                    // Professor: acesso à gestão/listagem de aulas
-                    header("Location: admin/list.php?type=classes");
-                    break;
-                case 'personal_trainer':
-                    // Personal trainer: acesso à gestão/listagem de marcações
-                    header("Location: admin/list.php?type=bookings");
-                    break;
-                case 'cliente':
-                default:
-                    // Cliente ou perfil desconhecido: redireciona para homepage
-                    header("Location: index.php");
-                    break;
+    if ($db_connected) {
+        $sql = "SELECT * FROM users WHERE email = ?";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("s", $email);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        if ($result->num_rows === 1) {
+            $user = $result->fetch_assoc();
+            if ($user['password'] === hash('sha256', $password)) {
+                $_SESSION['user_id']   = $user['id'];
+                $_SESSION['user_name'] = $user['name'];
+                $_SESSION['user_role'] = $user['role'];
+                switch ($user['role']) {
+                    case 'gestor_ginasio':
+                        header("Location: admin/index.php"); break;
+                    case 'gestora_clientes':
+                        header("Location: admin/list.php?type=bookings"); break;
+                    case 'professor':
+                        header("Location: admin/list.php?type=classes"); break;
+                    case 'personal_trainer':
+                        header("Location: admin/list.php?type=bookings"); break;
+                    case 'cliente':
+                    default:
+                        header("Location: index.php"); break;
+                }
+                exit;
+            } else {
+                $loginError = "Password incorreta.";
             }
-            exit; // Termina o script após o redirecionamento
-
         } else {
-            $loginError = "Password incorreta.";
+            $loginError = "Email não encontrado.";
         }
-
+        $stmt->close();
     } else {
-        $loginError = "Email não encontrado.";
+        $loginError = "Base de dados indisponível. Tente mais tarde.";
     }
-
-    $stmt->close();
 }
 ?>
 
-<div class="container mt-5">
-
-    <h2 class="text-center mb-4">Login</h2>
-
-    <!-- Mensagem de erro -->
+<style>
+.login-bg {
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(120deg, #fff 60%, #ff6633 100%);
+}
+.login-card {
+    background: #181b1f;
+    border-radius: 18px;
+    box-shadow: 0 4px 32px rgba(0,0,0,0.10);
+    padding: 2.5rem 2rem 2rem 2rem;
+    max-width: 420px;
+    width: 100%;
+    margin: 0 auto;
+}
+.login-title {
+    color: #ff6633;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 2.2rem;
+    text-transform: uppercase;
+}
+.login-card .form-label {
+    color: #fff;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+.login-card .form-control {
+    background: #23262b;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    margin-bottom: 1.2rem;
+}
+.login-card .form-control:focus {
+    box-shadow: 0 0 0 2px #ff6633;
+    border: none;
+}
+.login-card .btn-warning {
+    background: #ffdd00;
+    color: #181b1f;
+    font-weight: 800;
+    font-size: 1.15rem;
+    border-radius: 8px;
+    border: none;
+    letter-spacing: 1px;
+    margin-top: 0.5rem;
+    transition: background 0.2s;
+}
+.login-card .btn-warning:hover {
+    background: #ffb300;
+    color: #fff;
+}
+.login-card .input-group-text {
+    background: #23262b;
+    color: #ff6633;
+    border: none;
+    border-radius: 8px 0 0 8px;
+    font-size: 1.3rem;
+}
+@media (max-width: 600px) {
+    .login-card { padding: 1.2rem 0.5rem; }
+    .login-title { font-size: 1.3rem; }
+}
+</style>
+<div class="login-bg">
+  <div class="login-card">
+    <div class="login-title">Login</div>
     <?php if ($loginError): ?>
-        <div class="alert alert-danger text-center">
-            <?= $loginError ?>
-        </div>
+      <div class="alert alert-danger text-center mb-3 py-2">
+        <?= $loginError ?>
+      </div>
     <?php endif; ?>
-
-    <!-- Formulário de Login -->
-    <form method="POST" class="bg-dark text-white p-4 rounded">
-
-        <div class="mb-3">
-            <label class="form-label">Email</label>
-            <input type="email" name="email" class="form-control" required>
+    <form method="POST" autocomplete="on">
+      <div class="mb-3">
+        <label class="form-label" for="login-email">Email</label>
+        <div class="input-group">
+          <span class="input-group-text"><i class="bi bi-person"></i></span>
+          <input type="email" name="email" id="login-email" class="form-control" required autocomplete="username">
         </div>
-
-        <div class="mb-3">
-            <label class="form-label">Password</label>
-            <input type="password" name="password" class="form-control" required>
+      </div>
+      <div class="mb-3">
+        <label class="form-label" for="login-password">Password</label>
+        <div class="input-group">
+          <span class="input-group-text"><i class="bi bi-lock"></i></span>
+          <input type="password" name="password" id="login-password" class="form-control" required autocomplete="current-password">
         </div>
-
-        <button type="submit" class="btn btn-warning w-100">Entrar</button>
-
+      </div>
+      <button type="submit" class="btn btn-warning w-100">Entrar</button>
     </form>
-
+  </div>
 </div>
 
 <?php include 'includes/footer.php'; ?>

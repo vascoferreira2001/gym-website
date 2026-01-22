@@ -32,14 +32,14 @@
       <ul class="navbar-nav mb-2 mb-lg-0 align-items-lg-center gap-lg-3">
         <li class="nav-item"><a class="nav-link" href="/index.php">Início</a></li>
         <li class="nav-item"><a class="nav-link" href="/gallery.php">Galeria</a></li>
-        <li class="nav-item"><a class="nav-link" href="/booking.php">Aulas</a></li>
+        <li class="nav-item"><a class="nav-link" href="/aulas.php">Aulas Marcadas</a></li>
         <li class="nav-item"><a class="nav-link" href="/about.php">Sobre Nós</a></li>
         <li class="nav-item"><a class="nav-link" href="/contact.php">Contacto</a></li>
         <!-- Bloco dinâmico de autenticação -->
         <?php if (!isset($_SESSION)) session_start(); ?>
         <?php if (!isset($_SESSION['user_id'])): ?>
             <li class="nav-item">
-                <a class="nav-link" href="/login.php">Login</a>
+                <a class="btn fw-bold px-3 py-2" href="/login.php" style="background:#ff6633; color:#fff; border-radius:8px; font-size:1rem; letter-spacing:1px;">Área Reservada</a>
             </li>
         <?php else: ?>
             <li class="nav-item">
@@ -60,3 +60,8 @@
 </nav>
 <!-- Linha laranja abaixo do menu -->
 <div style="height:4px; background:#ff6633; width:100%; margin-bottom:0;"></div>
+
+<?php
+// Ativa/desativa debug global do site
+include_once __DIR__ . '/debug.php';
+?>

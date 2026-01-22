@@ -1,4 +1,3 @@
-
 <?php
 /**
  * ============================================================
@@ -6,22 +5,13 @@
  * OBJETIVO: Criar ligação à base de dados MySQL
  * ============================================================
  */
-
-$host = "localhost";   // Servidor da BD
-$user = "root";        // Utilizador MySQL
-$pass = "";            // Password MySQL
-$dbname = "gym_db";    // Nome da BD criada
-
-// Criar ligação
-$conn = new mysqli($host, $user, $pass, $dbname);
-
-/**
- * Verificar se a ligação falhou
- * mysqli_connect_errno() devolve um código de erro
- */
+$host = "localhost";
+$user = "maiagym";
+$pass = "BDUqh8afi@2kvn*1";
+$dbname = "maiagym";
+$conn = @new mysqli($host, $user, $pass, $dbname);
 if ($conn->connect_error) {
-    die("Erro na ligação à base de dados: " . $conn->connect_error);
+    $conn = null;
 }
-
-// Caso chegue aqui, a ligação foi bem-sucedida
+// Caso chegue aqui, a ligação foi bem-sucedida (ou $conn é null)
 ?>
