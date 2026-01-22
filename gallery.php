@@ -4,12 +4,9 @@
  * GALLERY.PHP — Página de Galeria de Imagens (Maia GYM)
  *
  * Esta página apresenta:
- * - Uma tabela responsiva com imagens do ginásio Maia GYM
- * - Layout simples e elegante usando Bootstrap
- * - Imagens externas temporárias (Pexels)
- *
- * O objetivo é cumprir o requisito do enunciado:
- * "A página Gallery deve apresentar uma tabela responsiva com imagens."
+ * - Uma galeria premium de imagens do ginásio Maia GYM
+ * - Layout responsivo, elegante e moderno usando Bootstrap
+ * - Imagens reais da pasta assets/images/gallery
  * ============================================================
  */
 
@@ -24,37 +21,52 @@ include 'includes/header.php'; // Inclui o menu e o layout inicial
 
     <!-- ============================================================
          GALERIA DE IMAGENS
-         O layout premium apresenta as imagens em cartões elegantes.
          ============================================================ -->
     <div class="row g-4 justify-content-center">
-
         <!-- Imagem 1 -->
-        <div class="col-md-4 col-12">
-            <div class="card shadow-sm border-0">
-                <img src="https://images.pexels.com/photos/3768913/pexels-photo-3768913.jpeg?auto=compress&fit=crop&w=600&q=80"
-                     class="card-img-top rounded"
-                     alt="Galeria Maia GYM">
+        <div class="col-lg-3 col-md-4 col-12">
+            <div class="card shadow-sm border-0 h-100">
+                <img src="/assets/images/gallery/1.png"
+                     class="card-img-top rounded-3"
+                     alt="Ginásio Maia GYM 1">
+                <div class="card-body text-center">
+                  <h5 class="card-title">Espaço Maia GYM 1</h5>
+                </div>
             </div>
         </div>
-
         <!-- Imagem 2 -->
-        <div class="col-md-4 col-12">
-            <div class="card shadow-sm border-0">
-                <img src="https://images.pexels.com/photos/3823039/pexels-photo-3823039.jpeg?auto=compress&fit=crop&w=600&q=80"
-                     class="card-img-top rounded"
-                     alt="Galeria Maia GYM">
+        <div class="col-lg-3 col-md-4 col-12">
+            <div class="card shadow-sm border-0 h-100">
+                <img src="/assets/images/gallery/2.png"
+                     class="card-img-top rounded-3"
+                     alt="Ginásio Maia GYM 2">
+                <div class="card-body text-center">
+                  <h5 class="card-title">Espaço Maia GYM 2</h5>
+                </div>
             </div>
         </div>
-
         <!-- Imagem 3 -->
-        <div class="col-md-4 col-12">
-            <div class="card shadow-sm border-0">
-                <img src="https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&fit=crop&w=600&q=80"
-                     class="card-img-top rounded"
-                     alt="Galeria Maia GYM">
+        <div class="col-lg-3 col-md-4 col-12">
+            <div class="card shadow-sm border-0 h-100">
+                <img src="/assets/images/gallery/3.png"
+                     class="card-img-top rounded-3"
+                     alt="Ginásio Maia GYM 3">
+                <div class="card-body text-center">
+                  <h5 class="card-title">Espaço Maia GYM 3</h5>
+                </div>
             </div>
         </div>
-
+        <!-- Imagem 4 -->
+        <div class="col-lg-3 col-md-4 col-12">
+            <div class="card shadow-sm border-0 h-100">
+                <img src="/assets/images/gallery/4.png"
+                     class="card-img-top rounded-3"
+                     alt="Ginásio Maia GYM 4">
+                <div class="card-body text-center">
+                  <h5 class="card-title">Espaço Maia GYM 4</h5>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 

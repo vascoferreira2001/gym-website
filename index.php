@@ -234,6 +234,19 @@ include 'includes/header.php';
   </div>
 </section>
 
+<!-- SECÇÃO DE VANTAGENS E DESCONTOS (APENAS TEXTO) -->
+<section class="py-5 bg-white">
+  <div class="container">
+    <div class="row justify-content-center mb-4">
+      <div class="col-12 text-center">
+        <h2 class="fw-bold mb-2" style="font-family:'Poppins',sans-serif; color:#133; font-size:2.3rem; text-transform:uppercase;">Vantagens e Descontos a Pensar em Ti</h2>
+        <div style="width:40px; height:4px; background:#ffd600; margin:0 auto 1.5rem auto;"></div>
+        <p class="lead" style="color:#1a2b2b; font-size:1.2rem;">Já fazes parte da Tribo Maia GYM? Temos vantagens e descontos exclusivos.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <?php include 'includes/footer.php'; ?>
 
 

@@ -19,7 +19,7 @@
 <body>
 
 <!-- NAVBAR MODERNA E RESPONSIVA -->
-<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm py-3">
+<nav class="navbar navbar-expand-lg navbar-light shadow-sm py-3" style="background:#fff !important; border-bottom:none !important;">
   <div class="container">
     <!-- Logotipo à esquerda -->
     <a class="navbar-brand fw-bold text-uppercase" href="/index.php" style="color:#ff6633; letter-spacing:1px; font-size:2rem;">Maia GYM</a>
@@ -58,3 +58,5 @@
     </div>
   </div>
 </nav>
+<!-- Linha laranja abaixo do menu -->
+<div style="height:4px; background:#ff6633; width:100%; margin-bottom:0;"></div>
