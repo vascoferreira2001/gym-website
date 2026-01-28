@@ -6,6 +6,19 @@
  */
 ?>
 <!DOCTYPE html>
+
+<?php
+/**
+ * ============================================================
+ * HEADER.PHP — Header global do site Maia GYM
+ *
+ * OBJETIVO:
+ * - Incluir o layout premium e responsivo
+ * - Apresentar a navbar moderna com autenticação dinâmica
+ * ============================================================
+ */
+?>
+<!DOCTYPE html>
 <html lang="pt">
 <head>
   <meta charset="UTF-8">
@@ -18,7 +31,9 @@
 </head>
 <body>
 
-<!-- NAVBAR MODERNA E RESPONSIVA -->
+<!-- ============================================================
+     NAVBAR MODERNA E RESPONSIVA
+     ============================================================ -->
 <nav class="navbar navbar-expand-lg navbar-light shadow-sm py-3" style="background:#fff !important; border-bottom:none !important;">
   <div class="container">
     <!-- Logotipo à esquerda -->
@@ -38,10 +53,13 @@
         <!-- Bloco dinâmico de autenticação -->
         <?php if (!isset($_SESSION)) session_start(); ?>
         <?php if (!isset($_SESSION['user_id'])): ?>
+            <!-- Se não estiver autenticado, mostra botão de login -->
             <li class="nav-item">
-                <a class="btn fw-bold px-3 py-2" href="/login.php" style="background:#ff6633; color:#fff; border-radius:8px; font-size:1rem; letter-spacing:1px;">Área Reservada</a>
+                <a class="btn fw-bold px-3 py-2" href="/login.php" style="background:#ff6633; color:#fff; border-radius:8px; font-size:1rem; letter-spacing:1px;">
+Área Reservada</a>
             </li>
         <?php else: ?>
+            <!-- Se autenticado, mostra nome e opções -->
             <li class="nav-item">
                 <span class="nav-link">Olá, <?= htmlspecialchars($_SESSION['user_name']) ?></span>
             </li>
@@ -58,10 +76,3 @@
     </div>
   </div>
 </nav>
-<!-- Linha laranja abaixo do menu -->
-<div style="height:4px; background:#ff6633; width:100%; margin-bottom:0;"></div>
-
-<?php
-// Ativa/desativa debug global do site
-include_once __DIR__ . '/debug.php';
-?>

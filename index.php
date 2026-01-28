@@ -1,25 +1,36 @@
-<?php 
+
+<?php
 /**
+ * ============================================================
  * INDEX.PHP — HOMEPAGE DO MAIA GYM
- * Layout premium inspirado em FitnessUp
- * Inclui hero/carousel Swiper, serviços e cards
+ *
+ * Página inicial do site. Apresenta:
+ * - Carousel premium com 4 slides (Swiper.js)
+ * - Secção de destaque com Personal Trainer
+ * - Cards de serviços com expand/collapse
+ * - Secção de app móvel e ringue de combate
+ *
+ * Todo o layout é responsivo e utiliza Bootstrap 5.
+ * ============================================================
  */
-include 'includes/header.php'; 
+
+include 'includes/header.php'; // Inclui o header global (menu, Bootstrap, início do HTML)
 ?>
 
 
 <!-- ============================= -->
 <!-- CAROUSEL SWIPER PREMIUM (4 slides)
-  Carousel principal da homepage, com 4 slides ilustrativos dos serviços do ginásio.
-  Utiliza Swiper.js para navegação, autoplay e responsividade.
-  Cada slide tem imagem de fundo, título, descrição e botão de ação.
+     Carousel principal da homepage, com 4 slides ilustrativos dos serviços do ginásio.
+     Utiliza Swiper.js para navegação, autoplay e responsividade.
+     Cada slide tem imagem de fundo, título, descrição e botão de ação.
 -->
-<!-- Swiper CSS -->
+<!-- Swiper CSS (carregado via CDN) -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 <section class="hero-main p-0" style="background:none;">
   <div class="swiper mySwiper">
     <div class="swiper-wrapper">
       <!-- Slide 1: Treina com os melhores -->
+      <!-- Slide com imagem de fundo, título, descrição e botão -->
       <div class="swiper-slide d-flex align-items-center justify-content-center" style="background:url('https://images.pexels.com/photos/3768913/pexels-photo-3768913.jpeg?auto=compress&fit=crop&w=1500&q=80') center/cover no-repeat; min-height:60vh;">
         <div class="container text-center text-white py-5" style="background: rgba(0,0,0,0.45); border-radius: 18px; max-width: 600px;">
           <h1 class="display-4 fw-bold mb-3">Treina com os melhores</h1>
@@ -52,7 +63,7 @@ include 'includes/header.php';
         </div>
       </div>
     </div>
-    <!-- Controles Swiper: paginação e navegação -->
+    <!-- Controles Swiper: paginação e navegação (setas e bolinhas) -->
     <div class="swiper-pagination"></div>
     <div class="swiper-button-prev"></div>
     <div class="swiper-button-next"></div>

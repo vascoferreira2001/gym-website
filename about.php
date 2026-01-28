@@ -1,11 +1,12 @@
+
 <?php
 /**
  * ============================================================
  * ABOUT.PHP — Página "Sobre Nós" (Maia GYM)
  *
- * Esta página apresenta:
- * - Texto institucional sobre o ginásio Maia GYM
- * - Imagens ilustrativas
+ * OBJETIVO:
+ * - Apresentar texto institucional sobre o ginásio Maia GYM
+ * - Mostrar imagens ilustrativas
  * - Botão para navegar para a página Contact
  *
  * O conteúdo é estático, mas totalmente responsivo graças ao Bootstrap.
@@ -14,6 +15,7 @@
 
 include 'includes/header.php'; // Inclui o menu e o layout inicial
 ?>
+
 
 <!-- ============================================================
      SECÇÃO PRINCIPAL "SOBRE NÓS"
@@ -26,7 +28,7 @@ include 'includes/header.php'; // Inclui o menu e o layout inicial
     <!-- Linha com duas colunas: texto + imagem -->
     <div class="row align-items-center mb-5">
 
-        <!-- Coluna do texto -->
+        <!-- Coluna do texto institucional -->
         <div class="col-md-6 mb-4 mb-md-0">
             <h4 class="mb-3 fw-bold">A Nossa História</h4>
 
@@ -38,10 +40,11 @@ include 'includes/header.php'; // Inclui o menu e o layout inicial
                 acompanhamento profissional.
             </p>
 
+            <!-- Botão para navegar para a página de contacto -->
             <a href="contact.php" class="btn btn-warning mt-3" style="background:#ff6633; border:none;">Contactar</a>
         </div>
 
-        <!-- Coluna da imagem -->
+        <!-- Coluna da imagem ilustrativa -->
         <div class="col-md-6 text-center">
             <img src="https://images.pexels.com/photos/1954524/pexels-photo-1954524.jpeg?auto=compress&fit=crop&w=600&q=80"
                  alt="Sobre Maia GYM"

@@ -1,116 +1,160 @@
 <?php
 /**
- * Área Reservada do Professor / Personal Trainer
- * Permite criar aulas, ver inscrições e dados dos sócios
+ * ============================================================
+ * ÁREA-RESERVADA/PROFESSOR.PHP — Área reservada do professor/personal trainer
+ *
+ * OBJETIVO:
+ * - Permitir ao professor criar aulas
+ * - Permitir ver inscrições e dados dos sócios
+ * - Permitir criar contas de sócio
+ * ============================================================
  */
-include '../includes/header.php';
-@include '../includes/db.php';
+
+include '../includes/header.php'; // Inclui o header global (layout + menu)
+@include '../includes/db.php';    // Inclui a ligação à base de dados
+
+// Iniciar sessão para verificar autenticação
 session_start();
+// Verificar se o utilizador tem o papel de 'professor' ou 'personal_trainer'
 if (!isset($_SESSION['user_role']) || !in_array($_SESSION['user_role'], ['professor','personal_trainer'])) {
-    header('Location: /login.php');
-    exit;
+  // Se não for professor/personal trainer, redireciona para o login
+  header('Location: /login.php');
+  exit;
 }
+
+// Variáveis para mensagens de feedback
 $success = $error = "";
-// Processar criação de aula
+
+// ============================================================
+// PROCESSAMENTO DO FORMULÁRIO DE CRIAÇÃO DE AULA
+// ============================================================
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['nome_aula'])) {
-    $nome = $_POST['nome_aula'];
-    $data = $_POST['data'];
-    $hora = $_POST['hora'];
-    $sala = $_POST['sala'];
-    if ($conn) {
-        $stmt = $conn->prepare("INSERT INTO classes (name, schedule, description, image) VALUES (?, ?, ?, ?)");
-        $schedule = $data . ' ' . $hora;
-        $desc = 'Aula criada pelo professor';
-        $img = '';
-        $stmt->bind_param("ssss", $nome, $schedule, $desc, $img);
-        if ($stmt->execute()) {
-            $success = "Aula criada com sucesso!";
-        } else {
-            $error = "Erro ao criar aula.";
-        }
-        $stmt->close();
+  $nome = $_POST['nome_aula'];           // Nome da aula
+  $data = $_POST['data'];                // Data da aula
+  $hora = $_POST['hora'];                // Hora da aula
+  $sala = $_POST['sala'];                // Sala
+  if ($conn) {
+    // Preparar e executar query para inserir nova aula
+    $stmt = $conn->prepare("INSERT INTO classes (name, schedule, description, image) VALUES (?, ?, ?, ?)");
+    $schedule = $data . ' ' . $hora;
+    $desc = 'Aula criada pelo professor';
+    $img = '';
+    $stmt->bind_param("ssss", $nome, $schedule, $desc, $img);
+    if ($stmt->execute()) {
+      $success = "Aula criada com sucesso!";
     } else {
-        $error = "Base de dados indisponível.";
+      $error = "Erro ao criar aula.";
     }
+    $stmt->close();
+  } else {
+    $error = "Base de dados indisponível.";
+  }
 }
-// Processar criação de sócio
+
+// ============================================================
+// PROCESSAMENTO DO FORMULÁRIO DE CRIAÇÃO DE SÓCIO
+// ============================================================
 $socio_success = $socio_error = "";
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['criar_socio'])) {
-    $nome = trim($_POST['nome_socio']);
-    $email = trim($_POST['email_socio']);
-    $identificador = strtoupper(bin2hex(random_bytes(4)));
-    $password = password_hash($_POST['password_socio'], PASSWORD_DEFAULT);
-    if ($conn) {
-        // Verificar se email já existe
-        $stmt = $conn->prepare("SELECT id FROM users WHERE email = ?");
-        $stmt->bind_param("s", $email);
-        $stmt->execute();
-        $stmt->store_result();
-        if ($stmt->num_rows > 0) {
-            $socio_error = "Já existe um sócio com este email.";
-        } else {
-            $stmt->close();
-            // Inserir novo sócio
-            $stmt2 = $conn->prepare("INSERT INTO users (name, email, identifier, password, role) VALUES (?, ?, ?, ?, 'socio')");
-            $stmt2->bind_param("ssss", $nome, $email, $identificador, $password);
-            if ($stmt2->execute()) {
-                $socio_success = "Sócio criado com sucesso! Identificador: <b>$identificador</b>";
-            } else {
-                $socio_error = "Erro ao criar sócio.";
-            }
-            $stmt2->close();
-        }
-        $stmt->close();
+  $nome = trim($_POST['nome_socio']);         // Nome do sócio
+  $email = trim($_POST['email_socio']);       // Email do sócio
+  $identificador = strtoupper(bin2hex(random_bytes(4))); // Identificador único
+  $password = password_hash($_POST['password_socio'], PASSWORD_DEFAULT); // Password encriptada
+  if ($conn) {
+    // Verificar se email já existe
+    $stmt = $conn->prepare("SELECT id FROM users WHERE email = ?");
+    $stmt->bind_param("s", $email);
+    $stmt->execute();
+    $stmt->store_result();
+    if ($stmt->num_rows > 0) {
+      $socio_error = "Já existe um sócio com este email.";
     } else {
-        $socio_error = "Base de dados indisponível.";
+      $stmt->close();
+      // Inserir novo sócio
+      $stmt2 = $conn->prepare("INSERT INTO users (name, email, identifier, password, role) VALUES (?, ?, ?, ?, 'socio')");
+      $stmt2->bind_param("ssss", $nome, $email, $identificador, $password);
+      if ($stmt2->execute()) {
+        $socio_success = "Sócio criado com sucesso! Identificador: <b>$identificador</b>";
+      } else {
+        $socio_error = "Erro ao criar sócio.";
+      }
+      $stmt2->close();
     }
+    $stmt->close();
+  } else {
+    $socio_error = "Base de dados indisponível.";
+  }
 }
-// Listar aulas criadas (todas as aulas)
+
+// ============================================================
+// LISTAGEM DE AULAS CRIADAS E INSCRITOS
+// ============================================================
 $aulas = [];
 if ($conn) {
-    $res = $conn->query("SELECT * FROM classes ORDER BY id DESC");
-    while ($row = $res->fetch_assoc()) {
-        // Contar inscritos nesta aula
-        $stmt2 = $conn->prepare("SELECT COUNT(*) as total FROM bookings WHERE class_id = ?");
-        $stmt2->bind_param("i", $row['id']);
-        $stmt2->execute();
-        $stmt2->bind_result($total_inscritos);
-        $stmt2->fetch();
-        $stmt2->close();
-        // Buscar dados dos sócios inscritos
-        $socios = [];
-        $stmt3 = $conn->prepare("SELECT name, email FROM bookings WHERE class_id = ?");
-        $stmt3->bind_param("i", $row['id']);
-        $stmt3->execute();
-        $stmt3->bind_result($nome_socio, $email_socio);
-        while ($stmt3->fetch()) {
-            $socios[] = ["name" => $nome_socio, "email" => $email_socio];
-        }
-        $stmt3->close();
-        $row['total_inscritos'] = $total_inscritos;
-        $row['socios'] = $socios;
-        $aulas[] = $row;
+  // Buscar todas as aulas criadas
+  $res = $conn->query("SELECT * FROM classes ORDER BY id DESC");
+  while ($row = $res->fetch_assoc()) {
+    // Contar inscritos nesta aula
+    $stmt2 = $conn->prepare("SELECT COUNT(*) as total FROM bookings WHERE class_id = ?");
+    $stmt2->bind_param("i", $row['id']);
+    $stmt2->execute();
+    $stmt2->bind_result($total_inscritos);
+    $stmt2->fetch();
+    $stmt2->close();
+    // Buscar dados dos sócios inscritos nesta aula
+    $socios = [];
+    $stmt3 = $conn->prepare("SELECT name, email FROM bookings WHERE class_id = ?");
+    $stmt3->bind_param("i", $row['id']);
+    $stmt3->execute();
+    $stmt3->bind_result($nome_socio, $email_socio);
+    while ($stmt3->fetch()) {
+      $socios[] = ["name" => $nome_socio, "email" => $email_socio];
     }
+    $stmt3->close();
+    $row['total_inscritos'] = $total_inscritos;
+    $row['socios'] = $socios;
+    $aulas[] = $row;
+  }
 }
 ?>
+
 <div class="container mt-5 mb-5">
+  <!-- Título da área reservada do professor/personal trainer -->
   <h2 class="text-center mb-4 fw-bold" style="color:#ff6633;">Área do Professor / Personal Trainer</h2>
+
+  <!-- Mensagens de feedback ao utilizador -->
   <?php if ($success): ?><div class="alert alert-success text-center"><?= $success ?></div><?php endif; ?>
   <?php if ($error): ?><div class="alert alert-danger text-center"><?= $error ?></div><?php endif; ?>
-  <!-- Formulário para criar aula -->
+
+  <!-- ============================================================
+       FORMULÁRIO PARA CRIAR/MARCAR NOVA AULA
+       ============================================================ -->
   <div class="card mb-4 p-4 shadow-sm">
     <h4 class="mb-3">Criar/Marcar Nova Aula</h4>
     <form method="POST" action="">
       <div class="row g-2">
-        <div class="col-md-4 mb-2"><input type="text" name="nome_aula" class="form-control" placeholder="Nome da Aula" required></div>
-        <div class="col-md-2 mb-2"><input type="date" name="data" class="form-control" required></div>
-        <div class="col-md-2 mb-2"><input type="time" name="hora" class="form-control" required></div>
-        <div class="col-md-2 mb-2"><input type="text" name="sala" class="form-control" placeholder="Sala" required></div>
-        <div class="col-md-2 mb-2"><button type="submit" class="btn btn-warning w-100 fw-bold" style="background:#ff6633; border:none;">Criar Aula</button></div>
+        <div class="col-md-4 mb-2">
+          <input type="text" name="nome_aula" class="form-control" placeholder="Nome da Aula" required>
+        </div>
+        <div class="col-md-2 mb-2">
+          <input type="date" name="data" class="form-control" required>
+        </div>
+        <div class="col-md-2 mb-2">
+          <input type="time" name="hora" class="form-control" required>
+        </div>
+        <div class="col-md-2 mb-2">
+          <input type="text" name="sala" class="form-control" placeholder="Sala" required>
+        </div>
+        <div class="col-md-2 mb-2">
+          <button type="submit" class="btn btn-warning w-100 fw-bold" style="background:#ff6633; border:none;">Criar Aula</button>
+        </div>
       </div>
     </form>
   </div>
-  <!-- Formulário para criação de conta de sócio -->
+
+  <!-- ============================================================
+       FORMULÁRIO PARA CRIAR CONTA DE SÓCIO
+       ============================================================ -->
   <div class="card mb-4 p-4 shadow-sm">
     <h4 class="mb-3">Criar Conta de Sócio</h4>
     <?php if ($socio_success): ?><div class="alert alert-success text-center"><?= $socio_success ?></div><?php endif; ?>
@@ -118,15 +162,26 @@ if ($conn) {
     <form method="POST" action="">
       <input type="hidden" name="criar_socio" value="1">
       <div class="row g-2">
-        <div class="col-md-4 mb-2"><input type="text" name="nome_socio" class="form-control" placeholder="Nome do Sócio" required></div>
-        <div class="col-md-4 mb-2"><input type="email" name="email_socio" class="form-control" placeholder="Email" required></div>
-        <div class="col-md-3 mb-2"><input type="password" name="password_socio" class="form-control" placeholder="Password" required></div>
-        <div class="col-md-1 mb-2"><button type="submit" class="btn btn-success w-100 fw-bold">Criar</button></div>
+        <div class="col-md-4 mb-2">
+          <input type="text" name="nome_socio" class="form-control" placeholder="Nome do Sócio" required>
+        </div>
+        <div class="col-md-4 mb-2">
+          <input type="email" name="email_socio" class="form-control" placeholder="Email" required>
+        </div>
+        <div class="col-md-3 mb-2">
+          <input type="password" name="password_socio" class="form-control" placeholder="Password" required>
+        </div>
+        <div class="col-md-1 mb-2">
+          <button type="submit" class="btn btn-success w-100 fw-bold">Criar</button>
+        </div>
       </div>
       <div class="form-text mt-1">O identificador único será gerado automaticamente.</div>
     </form>
   </div>
-  <!-- Listagem de aulas criadas pelo professor -->
+
+  <!-- ============================================================
+       LISTAGEM DE AULAS CRIADAS PELO PROFESSOR E INSCRITOS
+       ============================================================ -->
   <div class="card p-4 shadow-sm">
     <h4 class="mb-3">Aulas Criadas</h4>
     <div id="aulas-lista">
@@ -169,4 +224,8 @@ if ($conn) {
     </div>
   </div>
 </div>
-<?php include '../includes/footer.php'; ?>
+
+<?php 
+// Inclui o footer global
+include '../includes/footer.php'; 
+?>

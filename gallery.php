@@ -1,10 +1,11 @@
+
 <?php
 /**
  * ============================================================
  * GALLERY.PHP — Página de Galeria de Imagens (Maia GYM)
  *
- * Esta página apresenta:
- * - Uma galeria premium de imagens do ginásio Maia GYM
+ * OBJETIVO:
+ * - Apresentar uma galeria premium de imagens do ginásio Maia GYM
  * - Layout responsivo, elegante e moderno usando Bootstrap
  * - Imagens reais da pasta assets/images/gallery
  * ============================================================
@@ -13,14 +14,16 @@
 include 'includes/header.php'; // Inclui o menu e o layout inicial
 ?>
 
+
 <!-- ============================================================
      TÍTULO DA PÁGINA
      ============================================================ -->
 <div class="container mt-5">
+    <!-- Título da galeria -->
     <h2 class="text-center mb-4 fw-bold" style="color:#ff6633;">Galeria</h2>
 
     <!-- ============================================================
-         GALERIA DE IMAGENS
+         GALERIA DE IMAGENS DO GINÁSIO
          ============================================================ -->
     <div class="row g-4 justify-content-center">
         <!-- Imagem 1 -->

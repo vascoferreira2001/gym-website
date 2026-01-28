@@ -1,3 +1,4 @@
+
 <?php
 /**
  * ============================================================
@@ -26,7 +27,7 @@ include '../includes/header.php'; // Inclui o header global (menu + Bootstrap)
 
     <!-- Texto introdutório -->
     <p class="text-center text-white mb-4">
-        Bem-vindo ao painel de gestão do GoGym.  
+        Bem-vindo ao painel de gestão do Maia GYM.<br>
         Aqui podes administrar aulas, marcações e mensagens de contacto.
     </p>
 
@@ -40,7 +41,7 @@ include '../includes/header.php'; // Inclui o header global (menu + Bootstrap)
         <div class="col-md-4">
             <div class="card bg-dark text-white h-100 border-warning">
 
-                <!-- Imagem ilustrativa (temporária) -->
+                <!-- Imagem ilustrativa -->
                 <img src="https://images.pexels.com/photos/2261485/pexels-photo-2261485.jpeg"
                      class="card-img-top"
                      alt="Gestão de Aulas">
@@ -51,7 +52,7 @@ include '../includes/header.php'; // Inclui o header global (menu + Bootstrap)
                         Inserir, editar, listar e remover aulas disponíveis no ginásio.
                     </p>
 
-                    <!-- Botão que leva para listagem -->
+                    <!-- Botão que leva para listagem de aulas -->
                     <a href="list.php?type=classes" class="btn btn-warning w-100">
                         Gerir Aulas
                     </a>
@@ -63,6 +64,7 @@ include '../includes/header.php'; // Inclui o header global (menu + Bootstrap)
         <div class="col-md-4">
             <div class="card bg-dark text-white h-100 border-warning">
 
+                <!-- Imagem ilustrativa -->
                 <img src="https://images.pexels.com/photos/3823039/pexels-photo-3823039.jpeg"
                      class="card-img-top"
                      alt="Gestão de Marcações">
@@ -73,6 +75,7 @@ include '../includes/header.php'; // Inclui o header global (menu + Bootstrap)
                         Consulta e gestão das marcações feitas pelos utilizadores.
                     </p>
 
+                    <!-- Botão que leva para listagem de marcações -->
                     <a href="list.php?type=bookings" class="btn btn-warning w-100">
                         Gerir Marcações
                     </a>
@@ -84,6 +87,7 @@ include '../includes/header.php'; // Inclui o header global (menu + Bootstrap)
         <div class="col-md-4">
             <div class="card bg-dark text-white h-100 border-warning">
 
+                <!-- Imagem ilustrativa -->
                 <img src="https://images.pexels.com/photos/1552249/pexels-photo-1552249.jpeg"
                      class="card-img-top"
                      alt="Gestão de Contactos">
@@ -94,6 +98,7 @@ include '../includes/header.php'; // Inclui o header global (menu + Bootstrap)
                         Consulta das mensagens enviadas através do formulário de contacto.
                     </p>
 
+                    <!-- Botão que leva para listagem de mensagens de contacto -->
                     <a href="list.php?type=contacts" class="btn btn-warning w-100">
                         Ver Mensagens
                     </a>

@@ -3,7 +3,7 @@
  * ============================================================
  * ADMIN/LIST.PHP — Página de listagem dinâmica (Admin, Maia GYM)
  *
- * Esta página lista:
+ * Esta página permite ao administrador listar:
  * - Aulas (classes)
  * - Marcações (bookings)
  * - Mensagens de contacto (contacts)
@@ -18,13 +18,13 @@
  * ============================================================
  */
 
-include '../includes/header.php'; // Header global
-include '../includes/db.php';     // Ligação à base de dados
+include '../includes/header.php'; // Inclui o header global
+include '../includes/db.php';     // Inclui a ligação à base de dados
 
-// Verificar se o parâmetro "type" foi enviado
+// Verifica se o parâmetro "type" foi enviado na query string
 $type = $_GET['type'] ?? null;
 
-// Variáveis para título e query
+// Variáveis para título da página e query SQL
 $title = "";
 $query = "";
 
@@ -54,7 +54,7 @@ switch ($type) {
         break;
 
     default:
-        // Se o parâmetro for inválido, mostrar erro
+        // Se o parâmetro for inválido, mostrar erro e terminar
         echo "<div class='container mt-5'>
                 <div class='alert alert-danger text-center'>
                     Tipo de listagem inválido.
@@ -64,13 +64,14 @@ switch ($type) {
         exit;
 }
 
-// Executar a query
+// Executa a query SQL definida acima
 $result = $conn->query($query);
 
 ?>
 
+
 <!-- ============================================================
-     TÍTULO DA PÁGINA
+     TÍTULO DA PÁGINA E BOTÃO DE VOLTAR
      ============================================================ -->
 <div class="container mt-5">
 
@@ -82,7 +83,7 @@ $result = $conn->query($query);
     </div>
 
     <!-- ============================================================
-         TABELA RESPONSIVA
+         TABELA RESPONSIVA DE LISTAGEM
          ============================================================ -->
     <div class="table-responsive">
         <table class="table table-dark table-bordered table-hover align-middle text-center">
@@ -90,6 +91,7 @@ $result = $conn->query($query);
             <thead class="table-warning text-dark">
                 <tr>
                     <?php if ($type === "classes"): ?>
+                        <!-- Cabeçalhos para aulas -->
                         <th>ID</th>
                         <th>Nome</th>
                         <th>Descrição</th>
@@ -98,6 +100,7 @@ $result = $conn->query($query);
                         <th>Ações</th>
 
                     <?php elseif ($type === "bookings"): ?>
+                        <!-- Cabeçalhos para marcações -->
                         <th>ID</th>
                         <th>Aula</th>
                         <th>Nome</th>
@@ -109,6 +112,7 @@ $result = $conn->query($query);
                         <th>Ações</th>
 
                     <?php elseif ($type === "contacts"): ?>
+                        <!-- Cabeçalhos para contactos -->
                         <th>ID</th>
                         <th>Nome</th>
                         <th>Email</th>
@@ -124,7 +128,7 @@ $result = $conn->query($query);
                     <tr>
 
                         <?php if ($type === "classes"): ?>
-
+                            <!-- Linha de aula -->
                             <td><?= $row['id'] ?></td>
                             <td><?= $row['name'] ?></td>
                             <td><?= $row['description'] ?></td>
@@ -138,7 +142,7 @@ $result = $conn->query($query);
                                 <?php endif; ?>
                             </td>
 
-                            <!-- Botões de ação -->
+                            <!-- Botões de ação para aulas -->
                             <td>
                                 <a href="edit.php?type=classes&id=<?= $row['id'] ?>" class="btn btn-warning btn-sm">Editar</a>
                                 <a href="delete.php?type=classes&id=<?= $row['id'] ?>" class="btn btn-danger btn-sm"
@@ -148,7 +152,7 @@ $result = $conn->query($query);
                             </td>
 
                         <?php elseif ($type === "bookings"): ?>
-
+                            <!-- Linha de marcação -->
                             <td><?= $row['id'] ?></td>
                             <td><?= $row['class_name'] ?></td>
                             <td><?= $row['name'] ?></td>
@@ -158,6 +162,7 @@ $result = $conn->query($query);
                             <td><?= $row['notes'] ?></td>
                             <td><?= $row['newsletter'] ? "Sim" : "Não" ?></td>
 
+                            <!-- Botão de apagar marcação -->
                             <td>
                                 <a href="delete.php?type=bookings&id=<?= $row['id'] ?>" class="btn btn-danger btn-sm"
                                    onclick="return confirm('Eliminar esta marcação?')">
@@ -166,7 +171,7 @@ $result = $conn->query($query);
                             </td>
 
                         <?php elseif ($type === "contacts"): ?>
-
+                            <!-- Linha de contacto -->
                             <td><?= $row['id'] ?></td>
                             <td><?= $row['name'] ?></td>
                             <td><?= $row['email'] ?></td>
@@ -185,6 +190,6 @@ $result = $conn->query($query);
 </div>
 
 <?php
-// Footer global
+// Inclui o footer global
 include '../includes/footer.php';
 ?>

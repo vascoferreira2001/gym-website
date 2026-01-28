@@ -13,10 +13,10 @@
  * ============================================================
  */
 
-include '../includes/header.php'; // Header global (layout + menu)
-include '../includes/db.php';     // Ligação à base de dados
+include '../includes/header.php'; // Inclui o header global (layout + menu)
+include '../includes/db.php';     // Inclui a ligação à base de dados
 
-// Variáveis para mensagens de feedback
+// Variáveis para mensagens de feedback ao utilizador
 $successMessage = "";
 $errorMessage   = "";
 
@@ -28,10 +28,10 @@ $errorMessage   = "";
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Recolher os dados enviados pelo formulário
-    $name        = $_POST['name'];
-    $description = $_POST['description'];
-    $schedule    = $_POST['schedule'];
-    $image       = $_POST['image'];
+    $name        = $_POST['name'];         // Nome da aula
+    $description = $_POST['description'];  // Descrição
+    $schedule    = $_POST['schedule'];     // Horário
+    $image       = $_POST['image'];        // URL da imagem
 
     // Query SQL com placeholders (para evitar SQL Injection)
     $sql = "INSERT INTO classes (name, description, schedule, image)
@@ -53,6 +53,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 ?>
 
+
 <div class="container mt-5">
 
     <!-- Título da página -->
@@ -65,7 +66,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </a>
     </div>
 
-    <!-- Mensagens de feedback -->
+    <!-- Mensagens de feedback ao utilizador -->
     <?php if ($successMessage): ?>
         <div class="alert alert-success text-center">
             <?= $successMessage ?>
@@ -79,7 +80,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <?php endif; ?>
 
     <!-- ============================================================
-         FORMULÁRIO DE INSERÇÃO
+         FORMULÁRIO DE INSERÇÃO DE NOVA AULA
          ============================================================ -->
     <form method="POST" class="bg-dark text-white p-4 rounded">
 
@@ -95,14 +96,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <textarea name="description" class="form-control" rows="3" required></textarea>
         </div>
 
-        <!-- Horário -->
+        <!-- Horário da aula -->
         <div class="mb-3">
             <label class="form-label">Horário</label>
             <input type="text" name="schedule" class="form-control" 
                    placeholder="Ex: Segunda 18:00" required>
         </div>
 
-        <!-- URL da Imagem -->
+        <!-- URL da Imagem (temporário) -->
         <div class="mb-3">
             <label class="form-label">URL da Imagem (temporário)</label>
             <input type="url" name="image" class="form-control"
@@ -113,7 +114,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </div>
         </div>
 
-        <!-- Botões -->
+        <!-- Botões do formulário -->
         <button type="submit" class="btn btn-warning w-100 mb-2">Guardar</button>
         <button type="reset" class="btn btn-outline-light w-100">Limpar</button>
 
@@ -121,5 +122,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </div>
 
 <?php
-include '../includes/footer.php'; // Footer global
+// Inclui o footer global
+include '../includes/footer.php';
 ?>

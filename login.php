@@ -1,18 +1,37 @@
+
 <?php
+/**
+ * ============================================================
+ * LOGIN.PHP — Página de Autenticação de Utilizadores (Maia GYM)
+ *
+ * OBJETIVO:
+ * - Permitir login por email ou identificador
+ * - Redirecionar para a área correta consoante o papel do utilizador
+ * ============================================================
+ */
+
+// Ativar erros para debugging (apenas em desenvolvimento)
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
+// Iniciar sessão para gerir autenticação
 session_start();
-@include 'includes/db.php';
-include 'includes/header.php';
+@include 'includes/db.php'; // Ligação à base de dados
+include 'includes/header.php'; // Header global
+
+// Variável para mensagens de erro
 $loginError = "";
 $db_connected = (isset($conn) && $conn);
 
+// ============================================================
+// PROCESSAMENTO DO FORMULÁRIO DE LOGIN
+// ============================================================
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $user_input = trim($_POST['user_input']);
-    $password = $_POST['password'];
+    $user_input = trim($_POST['user_input']); // Email ou identificador
+    $password = $_POST['password'];           // Password
     if ($db_connected) {
+        // Procurar utilizador por email ou identificador
         $sql = "SELECT * FROM users WHERE email = ? OR identifier = ?";
         $stmt = $conn->prepare($sql);
         $stmt->bind_param("ss", $user_input, $user_input);
@@ -20,10 +39,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $result = $stmt->get_result();
         if ($result->num_rows === 1) {
             $user = $result->fetch_assoc();
+            // Verificar password (hash seguro ou legacy sha256)
             if (password_verify($password, $user['password']) || $user['password'] === hash('sha256', $password)) {
+                // Guardar dados do utilizador na sessão
                 $_SESSION['user_id']   = $user['id'];
                 $_SESSION['user_name'] = $user['name'];
                 $_SESSION['user_role'] = $user['role'];
+                // Redirecionar consoante o papel
                 switch ($user['role']) {
                     case 'gestor_ginasio':
                         header("Location: admin/index.php"); break;
@@ -53,7 +75,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 ?>
 
+
 <style>
+/* ============================================================
+   ESTILOS DA PÁGINA DE LOGIN
+   ============================================================ */
 .login-bg {
     min-height: 80vh;
     display: flex;
@@ -123,15 +149,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     .login-title { font-size: 1.3rem; }
 }
 </style>
+
+<!-- ============================================================
+     FORMULÁRIO DE LOGIN
+     ============================================================ -->
 <div class="login-bg">
   <div class="login-card">
+    <!-- Título do formulário -->
     <div class="login-title">Login</div>
+    <!-- Mensagem de erro, se existir -->
     <?php if ($loginError): ?>
       <div class="alert alert-danger text-center mb-3 py-2">
         <?= $loginError ?>
       </div>
     <?php endif; ?>
         <form method="POST" autocomplete="on">
+            <!-- Campo para identificador ou email -->
             <div class="mb-3">
                 <label class="form-label" for="login-user-input">Identificador ou Email</label>
                 <div class="input-group">
@@ -139,6 +172,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <input type="text" name="user_input" id="login-user-input" class="form-control" required autocomplete="username">
                 </div>
             </div>
+            <!-- Campo para password -->
             <div class="mb-3">
                 <label class="form-label" for="login-password">Password</label>
                 <div class="input-group">
@@ -146,9 +180,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <input type="password" name="password" id="login-password" class="form-control" required autocomplete="current-password">
                 </div>
             </div>
+            <!-- Botão de submissão -->
             <button type="submit" class="btn btn-warning w-100">Entrar</button>
         </form>
   </div>
 </div>
 
-<?php include 'includes/footer.php'; ?>
+<?php 
+// Inclui o footer global
+include 'includes/footer.php'; 
+?>

@@ -1,15 +1,17 @@
+
 <?php
 /**
  * ============================================================
  * LOGOUT.PHP — Terminar Sessão do Utilizador
  * ============================================================
- * - Destroi a sessão PHP
+ * OBJETIVO:
+ * - Destroi a sessão PHP do utilizador
  * - Redireciona para a homepage
- * - Comentários detalhados para explicação académica
  * ============================================================
  */
 
-session_start(); // Iniciar sessão para poder destruí-la
+// Iniciar sessão para poder destruí-la
+session_start();
 
 // Remover todas as variáveis de sessão
 $_SESSION = array();
@@ -17,13 +19,16 @@ $_SESSION = array();
 // Se existir um cookie de sessão, removê-lo
 if (ini_get("session.use_cookies")) {
     $params = session_get_cookie_params();
-    setcookie(session_name(), '', time() - 42000,
+    setcookie(
+        session_name(), // Nome do cookie de sessão
+        '',             // Valor vazio para eliminar
+        time() - 42000, // Expirar no passado
         $params["path"], $params["domain"],
         $params["secure"], $params["httponly"]
     );
 }
 
-// Destruir a sessão
+// Destruir a sessão PHP
 session_destroy();
 
 // Redirecionar para a homepage

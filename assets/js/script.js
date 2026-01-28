@@ -1,27 +1,21 @@
 
 // ============================================================
-// main.js — JS principal do site do ginásio Maia GYM
-// Pode ser usado para scripts globais, interações customizadas
+// SCRIPT.JS — Código JavaScript personalizado do Maia GYM
 // ============================================================
 
-// Exemplo: código para funcionalidades JS globais pode ser colocado aqui
-// (Atualmente não utilizado, pois o expand/collapse dos cards usa Bootstrap)
-
-// JS personalizado do projeto GoGym
-// Funções auxiliares e validação de formulários
-
+// Mensagem de carregamento do site (debug)
 console.log("GoGym website carregado.");
 
 /**
- * Valida os campos de um formulário de contacto.
+ * Valida os campos de um formulário de contacto ou reserva.
  * Adiciona classes de erro e devolve true/false.
- * @param {HTMLFormElement} form
- * @returns {boolean}
+ * @param {HTMLFormElement} form - O formulário a validar
+ * @returns {boolean} - true se válido, false se inválido
  */
 function validateForm(form) {
     let valid = true;
     let messages = [];
-    // Nome
+    // Validação do campo Nome
     var name = form.querySelector('[name="name"]');
     if (name && typeof name.value === 'string' && name.value.trim().length < 3) {
         valid = false;
@@ -30,7 +24,7 @@ function validateForm(form) {
     } else if (name) {
         name.classList.remove('is-invalid');
     }
-    // Email
+    // Validação do campo Email
     var email = form.querySelector('[name="email"]');
     if (email && typeof email.value === 'string') {
         var emailPattern = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
@@ -42,7 +36,7 @@ function validateForm(form) {
             email.classList.remove('is-invalid');
         }
     }
-    // Mensagem
+    // Validação do campo Mensagem
     var message = form.querySelector('[name="message"]');
     if (message && typeof message.value === 'string' && message.value.trim().length < 10) {
         valid = false;
@@ -51,7 +45,7 @@ function validateForm(form) {
     } else if (message) {
         message.classList.remove('is-invalid');
     }
-    // Descrição (opcional)
+    // Validação do campo Descrição (opcional)
     var description = form.querySelector('[name="description"]');
     if (description && typeof description.value === 'string' && description.value.trim().length < 5) {
         valid = false;
@@ -67,31 +61,36 @@ function validateForm(form) {
     return valid;
 }
 
-// Aplica validação a todos os formulários relevantes
+// Aplica validação a todos os formulários relevantes do site
 window.addEventListener('DOMContentLoaded', function() {
     document.querySelectorAll('form').forEach(function(form) {
         form.addEventListener('submit', function(e) {
+            // Se o formulário não for válido, impede o envio
             if (!validateForm(form)) {
                 e.preventDefault();
             }
         });
     });
 });
-//
-// Comentário: Script para garantir que o carousel Bootstrap funciona corretamente
-// e ocupa toda a largura. Inicializa o carousel apenas via JS, com avanço automático a cada 15 segundos e controles ativos.
-// Adicionado logs para debug.
+
+// ============================================================
+// INICIALIZAÇÃO DO CAROUSEL PRINCIPAL (Bootstrap)
+// ============================================================
+// Garante que o carousel Bootstrap funciona corretamente,
+// com avanço automático a cada 15 segundos e botões ativos.
+// Adiciona logs para debug e controlo de erros.
 document.addEventListener('DOMContentLoaded', function() {
     var carousel = document.getElementById('mainCarousel');
     if (!carousel) {
         console.error('mainCarousel não encontrado no DOM');
         return;
     }
+    // Verifica se o Bootstrap Carousel está disponível
     if (typeof bootstrap === 'undefined' || !bootstrap.Carousel) {
         console.error('Bootstrap Carousel não está disponível. Verifique se o JS do Bootstrap foi carregado.');
         return;
     }
-    // Destroi instância anterior se existir
+    // Destroi instância anterior se existir (evita bugs)
     if (carousel.bsCarousel) {
         carousel.bsCarousel.dispose();
         console.log('Instância anterior do carousel destruída.');
@@ -105,7 +104,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     carousel.bsCarousel = bsCarousel;
     console.log('Bootstrap Carousel inicializado com sucesso!', bsCarousel);
-    // Garante que os botões funcionam
+    // Garante que os botões de navegação funcionam
     var prevBtn = document.querySelector('.carousel-control-prev');
     var nextBtn = document.querySelector('.carousel-control-next');
     if (prevBtn) {
