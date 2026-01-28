@@ -7,13 +7,19 @@
 include 'includes/header.php'; 
 ?>
 
-<!-- CAROUSEL SWIPER PREMIUM -->
+
+<!-- ============================= -->
+<!-- CAROUSEL SWIPER PREMIUM (4 slides)
+  Carousel principal da homepage, com 4 slides ilustrativos dos serviços do ginásio.
+  Utiliza Swiper.js para navegação, autoplay e responsividade.
+  Cada slide tem imagem de fundo, título, descrição e botão de ação.
+-->
 <!-- Swiper CSS -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 <section class="hero-main p-0" style="background:none;">
   <div class="swiper mySwiper">
     <div class="swiper-wrapper">
-      <!-- Slide 1 -->
+      <!-- Slide 1: Treina com os melhores -->
       <div class="swiper-slide d-flex align-items-center justify-content-center" style="background:url('https://images.pexels.com/photos/3768913/pexels-photo-3768913.jpeg?auto=compress&fit=crop&w=1500&q=80') center/cover no-repeat; min-height:60vh;">
         <div class="container text-center text-white py-5" style="background: rgba(0,0,0,0.45); border-radius: 18px; max-width: 600px;">
           <h1 class="display-4 fw-bold mb-3">Treina com os melhores</h1>
@@ -21,7 +27,7 @@ include 'includes/header.php';
           <a href="booking.php" class="btn btn-warning btn-lg fw-bold px-5 py-2" style="background:#ff6633; border:none;">Saber Mais</a>
         </div>
       </div>
-      <!-- Slide 2 -->
+      <!-- Slide 2: Personal Trainer -->
       <div class="swiper-slide d-flex align-items-center justify-content-center" style="background:url('https://images.pexels.com/photos/3823039/pexels-photo-3823039.jpeg?auto=compress&fit=crop&w=1500&q=80') center/cover no-repeat; min-height:60vh;">
         <div class="container text-center text-white py-5" style="background: rgba(0,0,0,0.45); border-radius: 18px; max-width: 600px;">
           <h1 class="display-4 fw-bold mb-3">Personal Trainer</h1>
@@ -29,7 +35,7 @@ include 'includes/header.php';
           <a href="booking.php" class="btn btn-warning btn-lg fw-bold px-5 py-2" style="background:#ff6633; border:none;">Saber Mais</a>
         </div>
       </div>
-      <!-- Slide 3 -->
+      <!-- Slide 3: Nutrição Desportiva -->
       <div class="swiper-slide d-flex align-items-center justify-content-center" style="background:url('https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&fit=crop&w=1500&q=80') center/cover no-repeat; min-height:60vh;">
         <div class="container text-center text-white py-5" style="background: rgba(0,0,0,0.45); border-radius: 18px; max-width: 600px;">
           <h1 class="display-4 fw-bold mb-3">Nutrição Desportiva</h1>
@@ -37,8 +43,16 @@ include 'includes/header.php';
           <a href="booking.php" class="btn btn-warning btn-lg fw-bold px-5 py-2" style="background:#ff6633; border:none;">Saber Mais</a>
         </div>
       </div>
+      <!-- Slide 4: Aulas de Grupo -->
+      <div class="swiper-slide d-flex align-items-center justify-content-center" style="background:url('https://images.pexels.com/photos/1954524/pexels-photo-1954524.jpeg?auto=compress&fit=crop&w=1500&q=80') center/cover no-repeat; min-height:60vh;">
+        <div class="container text-center text-white py-5" style="background: rgba(0,0,0,0.45); border-radius: 18px; max-width: 600px;">
+          <h1 class="display-4 fw-bold mb-3">Aulas de Grupo</h1>
+          <p class="lead mb-4">CrossFit, Cycling, Yoga e muito mais.</p>
+          <a href="booking.php" class="btn btn-warning btn-lg fw-bold px-5 py-2" style="background:#ff6633; border:none;">Saber Mais</a>
+        </div>
+      </div>
     </div>
-    <!-- Controles Swiper -->
+    <!-- Controles Swiper: paginação e navegação -->
     <div class="swiper-pagination"></div>
     <div class="swiper-button-prev"></div>
     <div class="swiper-button-next"></div>
@@ -47,6 +61,7 @@ include 'includes/header.php';
 <!-- Swiper JS -->
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script>
+  // Inicialização do Swiper com autoplay, loop e navegação
   const swiper = new Swiper('.mySwiper', {
     loop: true,
     autoplay: { delay: 5000 },
@@ -74,57 +89,98 @@ include 'includes/header.php';
   </div>
 </section>
 
-<!-- SECÇÃO DE SERVIÇOS/VALORES -->
+
+<!-- ============================= -->
+<!-- SECÇÃO DE SERVIÇOS/VALORES COM CARDS EXPAND/COLLAPSE
+  Cada card representa um serviço do ginásio.
+  O botão "Mais info" expande uma descrição detalhada usando Bootstrap Collapse.
+  O botão "Reservar" leva para a página de marcação.
+-->
+<!-- Fim dos cards com expand/collapse -->
+<!--
+  Observações:
+  - O expand/collapse dos cards usa Bootstrap Collapse (data-bs-toggle="collapse").
+  - O Swiper.js é carregado via CDN e inicializado no script acima.
+  - Todo o código está comentado para facilitar manutenção e compreensão.
+-->
 <section class="services-main py-5">
   <div class="container">
     <div class="row justify-content-center g-4">
-      <!-- Card 1 -->
+      <!-- Card 1: Personal Trainer -->
       <div class="col-md-3 col-12">
         <div class="card service-card text-center h-100">
+          <!-- Imagem do serviço -->
           <img src="https://images.pexels.com/photos/3823039/pexels-photo-3823039.jpeg?auto=compress&fit=crop&w=600&q=80" class="card-img-top mx-auto mt-3" alt="Personal Trainer" style="width:80px; height:80px; object-fit:cover; border-radius:50%;">
           <div class="card-body">
             <h5 class="card-title">Personal Trainer</h5>
             <p class="card-text">Acompanhamento individualizado.</p>
-            <a href="booking.php" class="btn btn-outline-light ms-2">Reservar</a>
+            <!-- Botões alinhados horizontalmente -->
+            <div class="d-flex justify-content-center gap-2 mb-2">
+              <button class="btn btn-sm btn-info" type="button" data-bs-toggle="collapse" data-bs-target="#collapseCard1" aria-expanded="false" aria-controls="collapseCard1">Mais info</button>
+              <a href="booking.php" class="btn btn-outline-light">Reservar</a>
+            </div>
+            <!-- Conteúdo expandido -->
+            <div class="collapse text-start mt-2" id="collapseCard1">
+              <p class="small">Treina com um profissional certificado, com plano personalizado, acompanhamento de resultados e motivação constante.</p>
+            </div>
           </div>
         </div>
       </div>
-      <!-- Card 2 -->
+      <!-- Card 2: Nutrição -->
       <div class="col-md-3 col-12">
         <div class="card service-card text-center h-100">
           <img src="https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&fit=crop&w=600&q=80" class="card-img-top mx-auto mt-3" alt="Nutrição" style="width:80px; height:80px; object-fit:cover; border-radius:50%;">
           <div class="card-body">
             <h5 class="card-title">Nutrição</h5>
             <p class="card-text">Planos alimentares completos.</p>
-            <a href="booking.php" class="btn btn-outline-light ms-2">Reservar</a>
+            <div class="d-flex justify-content-center gap-2 mb-2">
+              <button class="btn btn-sm btn-info" type="button" data-bs-toggle="collapse" data-bs-target="#collapseCard2" aria-expanded="false" aria-controls="collapseCard2">Mais info</button>
+              <a href="booking.php" class="btn btn-outline-light">Reservar</a>
+            </div>
+            <div class="collapse text-start mt-2" id="collapseCard2">
+              <p class="small">Consulta com nutricionista, avaliação corporal, plano alimentar adaptado ao teu objetivo e acompanhamento mensal.</p>
+            </div>
           </div>
         </div>
       </div>
-      <!-- Card 3 -->
+      <!-- Card 3: Aulas de Grupo -->
       <div class="col-md-3 col-12">
         <div class="card service-card text-center h-100">
           <img src="https://images.pexels.com/photos/1954524/pexels-photo-1954524.jpeg?auto=compress&fit=crop&w=600&q=80" class="card-img-top mx-auto mt-3" alt="Aulas de Grupo" style="width:80px; height:80px; object-fit:cover; border-radius:50%;">
           <div class="card-body">
             <h5 class="card-title">Aulas de Grupo</h5>
             <p class="card-text">CrossFit, Cycling, Yoga e muito mais.</p>
-            <a href="booking.php" class="btn btn-outline-light ms-2">Reservar</a>
+            <div class="d-flex justify-content-center gap-2 mb-2">
+              <button class="btn btn-sm btn-info" type="button" data-bs-toggle="collapse" data-bs-target="#collapseCard3" aria-expanded="false" aria-controls="collapseCard3">Mais info</button>
+              <a href="booking.php" class="btn btn-outline-light">Reservar</a>
+            </div>
+            <div class="collapse text-start mt-2" id="collapseCard3">
+              <p class="small">Aulas dinâmicas para todos os níveis, com professores experientes e ambiente motivador. Experimenta grátis!</p>
+            </div>
           </div>
         </div>
       </div>
-      <!-- Card 4 -->
+      <!-- Card 4: Musculação -->
       <div class="col-md-3 col-12">
         <div class="card service-card text-center h-100">
           <img src="https://images.pexels.com/photos/2261485/pexels-photo-2261485.jpeg?auto=compress&fit=crop&w=600&q=80" class="card-img-top mx-auto mt-3" alt="Musculação" style="width:80px; height:80px; object-fit:cover; border-radius:50%;">
           <div class="card-body">
             <h5 class="card-title">Musculação</h5>
             <p class="card-text">Equipamentos modernos e treino de força.</p>
-            <a href="booking.php" class="btn btn-outline-light ms-2">Reservar</a>
+            <div class="d-flex justify-content-center gap-2 mb-2">
+              <button class="btn btn-sm btn-info" type="button" data-bs-toggle="collapse" data-bs-target="#collapseCard4" aria-expanded="false" aria-controls="collapseCard4">Mais info</button>
+              <a href="booking.php" class="btn btn-outline-light">Reservar</a>
+            </div>
+            <div class="collapse text-start mt-2" id="collapseCard4">
+              <p class="small">Zona de musculação equipada com máquinas topo de gama, pesos livres e acompanhamento técnico.</p>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
 </section>
+<!-- Fim dos cards com expand/collapse -->
 
 <!-- SECÇÃO DE DESTAQUE: APP MÓVEL & RINGUE DE COMBATE (INSPIRADO NA REFERÊNCIA) -->
 <section class="py-5" style="background:#f5f5f5;">

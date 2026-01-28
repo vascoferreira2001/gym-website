@@ -43,8 +43,12 @@
     </div>
   </div>
 </footer>
+</body>
 <!-- Bootstrap 5 JS via CDN -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<!-- JS personalizado do projeto (validações, interações, etc) -->
+<script src="/assets/js/script.js"></script>
+</html>
 </body>
 </html>

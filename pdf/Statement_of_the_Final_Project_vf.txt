@@ -1,0 +1,140 @@
+Master of Engineering in Web Technologies and Systems
+
+Web Programming
+Final Project
+Title: Responsive Website development in Booststrap with access to database tables
+Objectives:
+This activity is intended to aggregate the different subjects taught in this UC in order to
+provide students with a global vision of the Web development environment.
+At the end of this work, students should be able to practice the basic components of the
+elaboration of a website recurring to bootstrap framework. In addition, students should
+be able to create access to a database to store and retrieve information.
+Students must acquire basic knowledge of HTML, CSS, Javascript and PHP technologies.
+Description:
+The theme is free. Each group can define the theme you want as long as it respects the
+minimum requirements listed below. It is intended to develop a website that provides
+responsive navigation through information related to activities regarding the chosen
+theme. Use the bootstrap framework to accelerate development.
+Minimum requirements:
+•
+
+All pages should be responsive and have a responsive menu of options (at the
+very least, these options should exist):
+
+•
+
+The homepage should be composed by (at least) the following elements:
+o
+
+“Carousel” with a slide of a minimum of four images (adapt the images
+to your subject interests)
+
+Page 1 of 5
+
+Master of Engineering in Web Technologies and Systems
+
+Web Programming
+o
+o
+o
+
+The “carousel” of images should allow the navigation shown in the above
+image (2 and 4).
+The “carousel” of images must allow the insertion of text to describe the
+image (3).
+The “carousel” of images must present indicators to go directly to an
+image (4).
+
+o
+
+There must exist cards with 4 images and initial text (1)
+
+o
+
+It should be possible to expand more information - expand / collapse
+button effect (2)
+There should also be a 2nd button for the "Booking" option (3)
+
+o
+o
+
+By clicking on the "About us" option (main menu) you should go to
+the “About us” page of the homepage:
+
+Page 2 of 5
+
+Master of Engineering in Web Technologies and Systems
+
+Web Programming
+o
+o
+
+This page should present text (1) and (3) Images (2)
+And a button that should allow to go to “Contact us” (4)
+
+o
+
+The homepage should also have a footer with free information (whatever
+the group wants to put there)
+
+•
+
+The page “Gallery” should present a responsive table with images:
+
+•
+
+On the “Contact us” page, there should be a contact form (to submit questions)
+where you will be asked for the name, email address and the question to ask.
+On the “Contact us” page, there should be a contact form (to submit questions)
+where you will be asked for the name, email address and the question to ask.
+
+•
+
+•
+
+When you select the "Admin" option, you should access a new menu that allows
+you to insert a new record and list products, services, bookings, etc. (whatever
+makes sense for the site).
+
+•
+
+You can create as many tables as you need to make sense of your site, however,
+one of these tables (products, services, bookings, etc.) must have a number and
+types of fields approximately identical to the form below (booking form).
+
+Page 3 of 5
+
+Master of Engineering in Web Technologies and Systems
+
+Web Programming
+
+•
+
+The "Submit" option should allow records to be inserted into database tables
+using the appropriate form.
+
+•
+
+The “List rents” option should have the option to edit (for changes via a form)
+and remove at the end of the record. The remove option should allow the entire
+record to be shown in a form with disabled fields and 2 buttons (one for
+"continue" and delete, and a second button for cancel).
+
+Page 4 of 5
+
+Master of Engineering in Web Technologies and Systems
+
+Web Programming
+Technologies:
+Editor: Visual Studio Code
+Programming languages: HTML + CSS + JavaScript + PHP and the Bootstrap framework
+Groups, Deliver and Presentation:
+•
+•
+
+The delivery and presentation should take place on:
+Maximum presentation time: 30 minutes
+
+Page 5 of 5
+
+

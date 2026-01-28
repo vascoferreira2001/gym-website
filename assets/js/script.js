@@ -1,3 +1,12 @@
+
+// ============================================================
+// main.js — JS principal do site do ginásio Maia GYM
+// Pode ser usado para scripts globais, interações customizadas
+// ============================================================
+
+// Exemplo: código para funcionalidades JS globais pode ser colocado aqui
+// (Atualmente não utilizado, pois o expand/collapse dos cards usa Bootstrap)
+
 // JS personalizado do projeto GoGym
 // Funções auxiliares e validação de formulários
 
