@@ -11,19 +11,69 @@ O Maia GYM é um website de ginásio moderno, desenvolvido como projeto académi
 - **HTML5, CSS3, Bootstrap 5** (frontend responsivo)
 - **JavaScript** (validações, interações)
 
-### Funcionalidades principais
-- Homepage com carousel de 4 imagens e cards de serviços (com botão expand/collapse)
-- Sistema de marcação de aulas (Booking)
-- Galeria de imagens responsiva
-- Página de contacto com validação e envio
-- Área reservada/admin com CRUD (inserir, editar, remover)
-- Autenticação de utilizadores (inclui admin)
 
-### Fluxo do utilizador
-1. O visitante navega pelas páginas públicas (início, sobre, galeria, contacto)
-2. Pode marcar aulas via formulário (booking)
-3. O admin pode aceder à área reservada para gerir aulas, marcações e contactos
-4. Todos os formulários têm validação JS e feedback visual
+## Funcionalidades completas da plataforma Maia GYM
+
+### Funcionalidades públicas (acesso sem login)
+- Visualização da homepage com carousel de 4 imagens e cards de serviços (com botão expand/collapse)
+- Consulta de informações institucionais (Sobre Nós)
+- Visualização da galeria de imagens do ginásio
+- Consulta de contactos e envio de mensagens pelo formulário de contacto (com validação JS)
+- Consulta de horários e modalidades de aulas (página de aulas marcadas)
+- Links rápidos para redes sociais e navegação intuitiva
+
+### Funcionalidades de marcação e contacto
+- Marcação de aulas (Personal Trainer, Nutrição, Aulas de Grupo, Musculação) via formulário
+- Validação de todos os campos dos formulários em tempo real (JS)
+- Feedback visual de erros e sucesso nos formulários
+
+### Autenticação e perfis de utilizador
+- Login por email ou identificador único
+- Logout seguro (destruição de sessão)
+- Redirecionamento automático para a área reservada correta consoante o perfil
+- Perfis suportados: administrador, gestor de clientes, professor, personal trainer, sócio, cliente
+
+### Área reservada do administrador (admin)
+- Dashboard com resumo e navegação rápida
+- Listagem dinâmica de aulas, marcações e contactos
+- Inserção de novas aulas (formulário com validação)
+- Edição de aulas existentes
+- Remoção de aulas, marcações e contactos (com confirmação)
+- Visualização de todos os contactos recebidos
+- Gestão de utilizadores (dependendo do perfil)
+
+### Área reservada do professor/personal trainer
+- Criação/marcação de novas aulas (com data, hora, sala)
+- Listagem de todas as aulas criadas
+- Visualização do número de inscritos em cada aula
+- Consulta dos dados dos sócios inscritos em cada aula
+- Criação de contas de sócio (com geração automática de identificador)
+
+### Área reservada do sócio/cliente
+- Visualização de aulas disponíveis para inscrição (a implementar)
+- Inscrição em aulas (máximo de 20 inscrições por aula, a implementar)
+- Consulta das suas próprias marcações (a implementar)
+
+### Funcionalidades técnicas e extras
+- Validação de todos os formulários em JavaScript (contacto, booking, inserção de aulas, etc)
+- Layout totalmente responsivo (mobile, tablet, desktop)
+- Utilização de Bootstrap 5 via CDN para performance
+- Código comentado em pt-PT em todos os ficheiros (PHP, JS, CSS)
+- Estrutura modular e organizada (includes, admin, área reservada, assets)
+- Scripts SQL para criação e povoamento da base de dados
+- Possibilidade de expansão para novas funcionalidades (ex: upload de imagens, notificações, pagamentos, etc)
+
+### Fluxos de navegação possíveis
+- Visitante → Explora o site → Marca aula/contacta → (opcional) regista-se/entra
+- Admin → Login → Gestão total de aulas, marcações, contactos e utilizadores
+- Professor → Login → Cria aulas, consulta inscrições, cria sócios
+- Sócio → Login → Consulta aulas disponíveis, inscreve-se, consulta marcações
+
+### Segurança e boas práticas
+- Proteção de páginas reservadas por sessão PHP
+- Validação de dados no frontend (JS) e backend (PHP)
+- Passwords encriptadas na base de dados
+- Redirecionamento seguro após login/logout
 
 ---
 
