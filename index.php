@@ -87,10 +87,10 @@ include 'includes/header.php'; // Inclui o header global (menu, Bootstrap, iníc
     <div class="row align-items-center g-4">
       <!-- Texto inspirador -->
       <div class="col-md-6 col-12 d-flex flex-column justify-content-center">
-        <h2 class="fw-bold mb-2" style="font-family:'Poppins',sans-serif; color:#1a2b2b; font-size:2.3rem;">Faz como a Personal Trainer Inês Silva<br>vem ao Maia GYM</h2>
+        <h2 class="fw-bold mb-2" style="font-family:'Poppins',sans-serif; color:#1a2b2b; font-size:2.3rem;">Faz como a Personal Trainer Inês Silva<br>visita o Maia GYM!</h2>
         <div style="width:40px; height:4px; background:#ffd600; margin-bottom:1rem;"></div>
         <p class="mb-4" style="font-size:1.2rem; color:#233;">Descobre a tua melhor versão, supera-te e inspira quem está à tua volta.<br>O Maia GYM é o teu espaço para crescer, evoluir e conquistar resultados.</p>
-        <a href="booking.php" class="btn btn-warning fw-bold text-white" style="background:#ff6633; border:none; border-radius:2rem; max-width:200px;">SABE TUDO</a>
+        <a href="booking.php" class="btn btn-warning fw-bold text-white" style="background:#ff6633; border:none; border-radius:2rem; max-width:200px;">SABER MAIS</a>
       </div>
       <!-- Imagem de destaque -->
       <div class="col-md-6 col-12 text-center">

@@ -6,13 +6,14 @@
 -- ============================================================
 -- TABELA: users
 -- ============================================================
+
 CREATE TABLE IF NOT EXISTS users (
     id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(100),
     username VARCHAR(50) UNIQUE,
     email VARCHAR(150) UNIQUE,
     password VARCHAR(255) NOT NULL,
-    role ENUM('cliente','gestora_clientes','professor','personal_trainer','gestor_ginasio','admin','user') NOT NULL DEFAULT 'cliente',
+    role ENUM('cliente','personal_trainer','gestor_ginasio') NOT NULL DEFAULT 'cliente',
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
@@ -83,5 +84,7 @@ INSERT INTO contacts (name, email, message) VALUES
 -- ============================================================
 -- ALTERAÇÃO DA TABELA USERS: ENUM roles
 -- ============================================================
+
+-- Atualizar ENUM da coluna role para apenas os cargos válidos
 ALTER TABLE users
-MODIFY COLUMN role ENUM('cliente','gestora_clientes','professor','personal_trainer','gestor_ginasio','admin','user') NOT NULL DEFAULT 'cliente';
+MODIFY COLUMN role ENUM('cliente','personal_trainer','gestor_ginasio') NOT NULL DEFAULT 'cliente';

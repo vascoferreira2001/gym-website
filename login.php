@@ -48,17 +48,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 // Redirecionar consoante o papel
                 switch ($user['role']) {
                     case 'gestor_ginasio':
+                        // Gestor do ginásio (admin)
                         header("Location: admin/index.php"); break;
-                    case 'gestora_clientes':
-                        header("Location: admin/list.php?type=bookings"); break;
-                    case 'professor':
-                        header("Location: area-reservada/professor.php"); break;
                     case 'personal_trainer':
+                        // Professor/personal trainer
                         header("Location: area-reservada/professor.php"); break;
-                    case 'socio':
-                        header("Location: area-reservada/socio.php"); break;
                     case 'cliente':
                     default:
+                        // Cliente normal
                         header("Location: index.php"); break;
                 }
                 exit;
