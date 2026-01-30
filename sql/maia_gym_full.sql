@@ -7,19 +7,30 @@
 -- TABELA: users
 -- ============================================================
 
+
 CREATE TABLE IF NOT EXISTS users (
     id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(100),
     username VARCHAR(50) UNIQUE,
     email VARCHAR(150) UNIQUE,
+    identifier VARCHAR(100) UNIQUE,
     password VARCHAR(255) NOT NULL,
     role ENUM('cliente','personal_trainer','gestor_ginasio') NOT NULL DEFAULT 'cliente',
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
--- Inserir utilizador admin (Gestor Principal)
+-- Inserir utilizador(Gestor Principal)
 INSERT INTO users (name, username, email, password, role)
-VALUES ('Gestor Principal', 'admin', 'admin@gym.com', SHA2('admin123', 256), 'gestor_ginasio')
+VALUES ('Gestor', 'gestor', 'gestor@gym.com', SHA2('123456', 256), 'gestor_ginasio')
+ON DUPLICATE KEY UPDATE email=email;
+
+-- Utilizadores principais para testes
+INSERT INTO users (name, username, email, password, role)
+VALUES ('Personal Trainer', 'pt', 'pt@gym.com', SHA2('123456', 256), 'personal_trainer')
+ON DUPLICATE KEY UPDATE email=email;
+
+INSERT INTO users (name, username, email, password, role)
+VALUES ('Cliente', 'cliente', 'cliente@gym.com', SHA2('123456', 256), 'cliente')
 ON DUPLICATE KEY UPDATE email=email;
 
 -- ============================================================
@@ -31,7 +42,9 @@ CREATE TABLE IF NOT EXISTS classes (
     description TEXT,
     image VARCHAR(255),
     schedule VARCHAR(100),
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    personal_trainer_id INT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (personal_trainer_id) REFERENCES users(id)
 );
 
 -- Dados de exemplo para classes
@@ -80,6 +93,19 @@ INSERT INTO contacts (name, email, message) VALUES
 ('Carlos Ferreira', 'carlos@example.com', 'Gostaria de saber preços dos planos anuais.'),
 ('Inês Rocha', 'ines@example.com', 'Têm aulas específicas para iniciantes?'),
 ('Pedro Gomes', 'pedro@example.com', 'Qual é o horário com menos afluência?');
+
+-- ============================================================
+-- ALTERAÇÃO DA TABELA USERS: Adicionar idade, telemovel, morada
+-- ============================================================
+ALTER TABLE users
+ADD COLUMN idade INT NULL AFTER name,
+ADD COLUMN telemovel VARCHAR(30) NULL AFTER email,
+ADD COLUMN morada VARCHAR(255) NULL AFTER telemovel;
+
+-- (Opcional) Atualizar utilizadores de teste para incluir estes campos
+UPDATE users SET idade=35, telemovel='912345678', morada='Rua do Ginásio, Maia' WHERE role='gestor_ginasio';
+UPDATE users SET idade=28, telemovel='911111111', morada='Rua dos PTs, Maia' WHERE role='personal_trainer';
+UPDATE users SET idade=22, telemovel='919999999', morada='Rua dos Clientes, Maia' WHERE role='cliente';
 
 -- ============================================================
 -- ALTERAÇÃO DA TABELA USERS: ENUM roles

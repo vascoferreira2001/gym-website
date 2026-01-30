@@ -19,17 +19,17 @@
           MAIAGYM
         </span>
       </div>
-      <!-- Links rápidos para navegação -->
+
+      <!-- Links rápidos -->
       <div class="col-12 col-md-3 text-center mb-3 mb-md-0">
-        <ul class="list-unstyled mb-0" style="font-size:1rem; display:inline-block; text-align:left;">
-          <li><a href="/about.php" class="text-dark text-decoration-none">Onde estamos</a></li>
-          <li><a href="/booking.php" class="text-dark text-decoration-none">Preços</a></li>
-          <li><a href="/contact.php" class="text-dark text-decoration-none">Protocolo Empresas</a></li>
-          <li><a href="/booking.php" class="text-dark text-decoration-none">Mapa de Aulas</a></li>
-          <li><a href="/about.php" class="text-dark text-decoration-none">Recrutamento</a></li>
-          <li><a href="/contact.php" class="text-dark text-decoration-none">Fala connosco</a></li>
+        <ul class="list-unstyled mb-0" style="font-size:1.08rem; display:inline-block; text-align:left;">
+          <li><a href="/about.php" class="text-dark text-decoration-none">Sobre Nós</a></li>
+          <li><a href="/gallery.php" class="text-dark text-decoration-none">Galeria</a></li>
+          <li><a href="/aulas.php" class="text-dark text-decoration-none">Aulas Disponíveis</a></li>
+          <li><a href="/contact.php" class="text-dark text-decoration-none">Contacto</a></li>
         </ul>
       </div>
+
       <!-- Redes sociais do ginásio -->
       <div class="col-12 col-md-3 text-center mb-3 mb-md-0">
         <div class="d-flex justify-content-center gap-3">

@@ -182,19 +182,23 @@ gym-website/
 
 ## Credenciais de Teste
 
-- **Admin:**
-    - Email: `admin@gym.com`
-    - Password: `admin123`
+- **Gestor:**
+    - Email: `gestor@gym.com`
+    - Password: `123456`
 
+- **Personal Trainer:**
+    - Email: `pt@gym.com`
+    - Password: `123456`    
+
+- **Cliente:**
+    - Email: `cliente@gym.com`
+    - Password: `123456`
 
 ## Requisitos
 
 - PHP 8+ instalado para páginas dinâmicas.
 - Servidor web com suporte a PHP e MySQL (ex: XAMPP, WAMP, LAMP).
 - Navegador moderno para visualização.
-
-
----
 
 
 ---

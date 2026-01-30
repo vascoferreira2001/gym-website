@@ -4,21 +4,8 @@
  * Layout premium inspirado em FitnessUp
  * Inclui navbar responsiva e moderna
  */
+if (session_status() === PHP_SESSION_NONE) session_start();
 ?>
-<!DOCTYPE html>
-
-<?php
-/**
- * ============================================================
- * HEADER.PHP — Header global do site Maia GYM
- *
- * OBJETIVO:
- * - Incluir o layout premium e responsivo
- * - Apresentar a navbar moderna com autenticação dinâmica
- * ============================================================
- */
-?>
-<!DOCTYPE html>
 <html lang="pt">
 <head>
   <meta charset="UTF-8">
@@ -45,32 +32,47 @@
     <!-- Itens do menu à direita -->
     <div class="collapse navbar-collapse justify-content-end" id="menu">
       <ul class="navbar-nav mb-2 mb-lg-0 align-items-lg-center gap-lg-3">
-        <li class="nav-item"><a class="nav-link" href="/index.php">Início</a></li>
-        <li class="nav-item"><a class="nav-link" href="/gallery.php">Galeria</a></li>
-        <li class="nav-item"><a class="nav-link" href="/aulas.php">Aulas Marcadas</a></li>
-        <li class="nav-item"><a class="nav-link" href="/about.php">Sobre Nós</a></li>
-        <li class="nav-item"><a class="nav-link" href="/contact.php">Contacto</a></li>
-        <!-- Bloco dinâmico de autenticação -->
         <?php if (!isset($_SESSION)) session_start(); ?>
-        <?php if (!isset($_SESSION['user_id'])): ?>
-            <!-- Se não estiver autenticado, mostra botão de login -->
+        <?php
+        $request_uri = isset($_SERVER['REQUEST_URI']) ? $_SERVER['REQUEST_URI'] : '';
+        $is_area_reservada = strpos($request_uri, '/area-reservada/') === 0;
+        $is_autenticado = isset($_SESSION['user_id']);
+        $is_area_reservada_autenticado = $is_area_reservada && $is_autenticado && isset($_SESSION['user_role']) && in_array($_SESSION['user_role'], ['cliente','personal_trainer','gestor_ginasio']);
+        $is_dashboard = $is_area_reservada && strpos($_SERVER['REQUEST_URI'], '/area-reservada/dashboard.php') !== false;
+        ?>
+        <?php if ($is_autenticado && (!$is_area_reservada || !$is_dashboard)) : ?>
+            <!-- Mostra o botão Voltar à Área Reservada em todas as páginas exceto no dashboard -->
             <li class="nav-item">
-                <a class="btn fw-bold px-3 py-2" href="/login.php" style="background:#ff6633; color:#fff; border-radius:8px; font-size:1rem; letter-spacing:1px;">
-Área Reservada</a>
+              <a class="btn fw-bold px-3 py-2 me-2" href="/area-reservada/dashboard.php" style="background:#ff6633; color:#fff; border-radius:8px; font-size:1rem; letter-spacing:1px;">Voltar à Área Reservada</a>
+            </li>
+        <?php endif; ?>
+        <?php if ($is_autenticado && ($is_area_reservada_autenticado || !$is_dashboard)) : ?>
+            <li class="nav-item">
+              <a class="btn fw-bold px-3 py-2" href="/logout.php" style="background:#222; color:#fff; border-radius:8px; font-size:1rem; letter-spacing:1px;">Logout</a>
             </li>
         <?php else: ?>
-            <!-- Se autenticado, mostra nome e opções -->
-            <li class="nav-item">
-                <span class="nav-link">Olá, <?= htmlspecialchars($_SESSION['user_name']) ?></span>
-            </li>
-            <?php if ($_SESSION['user_role'] === 'gestor_ginasio'): ?>
+            <li class="nav-item"><a class="nav-link" href="/index.php">Início</a></li>
+            <li class="nav-item"><a class="nav-link" href="/gallery.php">Galeria</a></li>
+            <li class="nav-item"><a class="nav-link" href="/aulas.php">Aulas Disponíveis</a></li>
+            <li class="nav-item"><a class="nav-link" href="/about.php">Sobre Nós</a></li>
+            <li class="nav-item"><a class="nav-link" href="/contact.php">Contacto</a></li>
+            <?php if (!$is_autenticado): ?>
+                <!-- Botão Área Reservada aponta sempre para login -->
                 <li class="nav-item">
-                    <a class="nav-link" href="/admin/index.php">Admin</a>
+                  <a class="btn fw-bold px-3 py-2" href="/area-reservada/login.php" style="background:#ff6633; color:#fff; border-radius:8px; font-size:1rem; letter-spacing:1px;">
+            Área Reservada</a>
+                </li>
+            <?php else: ?>
+                <li class="nav-item">
+                  <a class="nav-link fw-bold" href="/area-reservada/login.php">Área Reservada</a>
+                </li>
+                <li class="nav-item">
+                  <span class="nav-link">Olá, <?= htmlspecialchars($_SESSION['user_name']) ?></span>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/logout.php">Logout</a>
                 </li>
             <?php endif; ?>
-            <li class="nav-item">
-                <a class="nav-link" href="/logout.php">Logout</a>
-            </li>
         <?php endif; ?>
       </ul>
     </div>

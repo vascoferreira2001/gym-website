@@ -35,7 +35,7 @@ include 'includes/header.php'; // Inclui o header global (menu, Bootstrap, iníc
         <div class="container text-center text-white py-5" style="background: rgba(0,0,0,0.45); border-radius: 18px; max-width: 600px;">
           <h1 class="display-4 fw-bold mb-3">Treina com os melhores</h1>
           <p class="lead mb-4">Profissionais, equipamentos modernos e acompanhamento personalizado.</p>
-          <a href="booking.php" class="btn btn-warning btn-lg fw-bold px-5 py-2" style="background:#ff6633; border:none;">Saber Mais</a>
+          <a href="/area-reservada/login.php" class="btn btn-warning btn-lg fw-bold px-5 py-2" style="background:#ff6633; border:none;">Saber Mais</a>
         </div>
       </div>
       <!-- Slide 2: Personal Trainer -->
@@ -43,7 +43,7 @@ include 'includes/header.php'; // Inclui o header global (menu, Bootstrap, iníc
         <div class="container text-center text-white py-5" style="background: rgba(0,0,0,0.45); border-radius: 18px; max-width: 600px;">
           <h1 class="display-4 fw-bold mb-3">Personal Trainer</h1>
           <p class="lead mb-4">Acompanhamento individualizado para atingir os teus objetivos.</p>
-          <a href="booking.php" class="btn btn-warning btn-lg fw-bold px-5 py-2" style="background:#ff6633; border:none;">Saber Mais</a>
+          <a href="/area-reservada/login.php" class="btn btn-warning btn-lg fw-bold px-5 py-2" style="background:#ff6633; border:none;">Saber Mais</a>
         </div>
       </div>
       <!-- Slide 3: Nutrição Desportiva -->
@@ -51,7 +51,7 @@ include 'includes/header.php'; // Inclui o header global (menu, Bootstrap, iníc
         <div class="container text-center text-white py-5" style="background: rgba(0,0,0,0.45); border-radius: 18px; max-width: 600px;">
           <h1 class="display-4 fw-bold mb-3">Nutrição Desportiva</h1>
           <p class="lead mb-4">Planos alimentares completos e personalizados.</p>
-          <a href="booking.php" class="btn btn-warning btn-lg fw-bold px-5 py-2" style="background:#ff6633; border:none;">Saber Mais</a>
+          <a href="/area-reservada/login.php" class="btn btn-warning btn-lg fw-bold px-5 py-2" style="background:#ff6633; border:none;">Saber Mais</a>
         </div>
       </div>
       <!-- Slide 4: Aulas de Grupo -->
@@ -59,7 +59,7 @@ include 'includes/header.php'; // Inclui o header global (menu, Bootstrap, iníc
         <div class="container text-center text-white py-5" style="background: rgba(0,0,0,0.45); border-radius: 18px; max-width: 600px;">
           <h1 class="display-4 fw-bold mb-3">Aulas de Grupo</h1>
           <p class="lead mb-4">CrossFit, Cycling, Yoga e muito mais.</p>
-          <a href="booking.php" class="btn btn-warning btn-lg fw-bold px-5 py-2" style="background:#ff6633; border:none;">Saber Mais</a>
+          <a href="/area-reservada/login.php" class="btn btn-warning btn-lg fw-bold px-5 py-2" style="background:#ff6633; border:none;">Saber Mais</a>
         </div>
       </div>
     </div>
@@ -90,7 +90,7 @@ include 'includes/header.php'; // Inclui o header global (menu, Bootstrap, iníc
         <h2 class="fw-bold mb-2" style="font-family:'Poppins',sans-serif; color:#1a2b2b; font-size:2.3rem;">Faz como a Personal Trainer Inês Silva<br>visita o Maia GYM!</h2>
         <div style="width:40px; height:4px; background:#ffd600; margin-bottom:1rem;"></div>
         <p class="mb-4" style="font-size:1.2rem; color:#233;">Descobre a tua melhor versão, supera-te e inspira quem está à tua volta.<br>O Maia GYM é o teu espaço para crescer, evoluir e conquistar resultados.</p>
-        <a href="booking.php" class="btn btn-warning fw-bold text-white" style="background:#ff6633; border:none; border-radius:2rem; max-width:200px;">SABER MAIS</a>
+        <a href="/area-reservada/login.php" class="btn btn-warning fw-bold text-white" style="background:#ff6633; border:none; max-width:200px;">SABER MAIS</a>
       </div>
       <!-- Imagem de destaque -->
       <div class="col-md-6 col-12 text-center">
@@ -117,73 +117,71 @@ include 'includes/header.php'; // Inclui o header global (menu, Bootstrap, iníc
 <section class="services-main py-5">
   <div class="container">
     <div class="row justify-content-center g-4">
-      <!-- Card 1: Personal Trainer -->
+
+      <!-- Card 1: Aula de Pilates -->
       <div class="col-md-3 col-12">
         <div class="card service-card text-center h-100">
-          <!-- Imagem do serviço -->
-          <img src="https://images.pexels.com/photos/3823039/pexels-photo-3823039.jpeg?auto=compress&fit=crop&w=600&q=80" class="card-img-top mx-auto mt-3" alt="Personal Trainer" style="width:80px; height:80px; object-fit:cover; border-radius:50%;">
+          <img src="https://images.pexels.com/photos/414029/pexels-photo-414029.jpeg?auto=compress&fit=crop&w=600&q=80" class="card-img-top mx-auto mt-3" alt="Aula de Pilates" style="width:90px; height:90px; object-fit:cover; border-radius:50%; border:3px solid #ff6633;">
           <div class="card-body">
-            <h5 class="card-title">Personal Trainer</h5>
-            <p class="card-text">Acompanhamento individualizado.</p>
-            <!-- Botões alinhados horizontalmente -->
+            <h5 class="card-title fw-bold">Aula de Pilates</h5>
+            <p class="card-text">Melhora a flexibilidade, postura e bem-estar físico e mental.</p>
             <div class="d-flex justify-content-center gap-2 mb-2">
-              <button class="btn btn-sm btn-info" type="button" data-bs-toggle="collapse" data-bs-target="#collapseCard1" aria-expanded="false" aria-controls="collapseCard1">Mais info</button>
-              <a href="booking.php" class="btn btn-outline-light">Reservar</a>
+              <button class="btn btn-info fw-bold px-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapseCard1" aria-expanded="false" aria-controls="collapseCard1">Saber Mais</button>
+              <a href="/area-reservada/login.php" class="btn btn-outline-warning fw-bold px-3 reservar-btn" style="color:#ff6633; border:2px solid #ff6633; background:none;">Reservar</a>
             </div>
-            <!-- Conteúdo expandido -->
             <div class="collapse text-start mt-2" id="collapseCard1">
-              <p class="small">Treina com um profissional certificado, com plano personalizado, acompanhamento de resultados e motivação constante.</p>
+              <p class="small">Aula focada em alongamentos, fortalecimento do core e melhoria da postura. Ideal para todas as idades.</p>
             </div>
           </div>
         </div>
       </div>
-      <!-- Card 2: Nutrição -->
+      <!-- Card 2: Aulas de Yoga -->
       <div class="col-md-3 col-12">
         <div class="card service-card text-center h-100">
-          <img src="https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&fit=crop&w=600&q=80" class="card-img-top mx-auto mt-3" alt="Nutrição" style="width:80px; height:80px; object-fit:cover; border-radius:50%;">
+          <img src="https://images.pexels.com/photos/3822622/pexels-photo-3822622.jpeg?auto=compress&fit=crop&w=600&q=80" class="card-img-top mx-auto mt-3" alt="Aulas de Yoga" style="width:90px; height:90px; object-fit:cover; border-radius:50%; border:3px solid #ff6633;">
           <div class="card-body">
-            <h5 class="card-title">Nutrição</h5>
-            <p class="card-text">Planos alimentares completos.</p>
+            <h5 class="card-title fw-bold">Aulas de Yoga</h5>
+            <p class="card-text">Equilíbrio, relaxamento, energia e bem-estar para corpo e mente.</p>
             <div class="d-flex justify-content-center gap-2 mb-2">
-              <button class="btn btn-sm btn-info" type="button" data-bs-toggle="collapse" data-bs-target="#collapseCard2" aria-expanded="false" aria-controls="collapseCard2">Mais info</button>
-              <a href="booking.php" class="btn btn-outline-light">Reservar</a>
+              <button class="btn btn-info fw-bold px-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapseCard2" aria-expanded="false" aria-controls="collapseCard2">Saber Mais</button>
+              <a href="/area-reservada/login.php" class="btn btn-outline-warning fw-bold px-3 reservar-btn" style="color:#ff6633; border:2px solid #ff6633; background:none;">Reservar</a>
             </div>
             <div class="collapse text-start mt-2" id="collapseCard2">
-              <p class="small">Consulta com nutricionista, avaliação corporal, plano alimentar adaptado ao teu objetivo e acompanhamento mensal.</p>
+              <p class="small">Sessões de Yoga para todos os níveis, promovendo relaxamento, flexibilidade e bem-estar mental.</p>
             </div>
           </div>
         </div>
       </div>
-      <!-- Card 3: Aulas de Grupo -->
+      <!-- Card 3: Aula de CrossFit -->
       <div class="col-md-3 col-12">
         <div class="card service-card text-center h-100">
-          <img src="https://images.pexels.com/photos/1954524/pexels-photo-1954524.jpeg?auto=compress&fit=crop&w=600&q=80" class="card-img-top mx-auto mt-3" alt="Aulas de Grupo" style="width:80px; height:80px; object-fit:cover; border-radius:50%;">
+          <img src="https://images.pexels.com/photos/1552242/pexels-photo-1552242.jpeg?auto=compress&fit=crop&w=600&q=80" class="card-img-top mx-auto mt-3" alt="Aula de CrossFit" style="width:90px; height:90px; object-fit:cover; border-radius:50%; border:3px solid #ff6633;">
           <div class="card-body">
-            <h5 class="card-title">Aulas de Grupo</h5>
-            <p class="card-text">CrossFit, Cycling, Yoga e muito mais.</p>
+            <h5 class="card-title fw-bold">Aula de CrossFit</h5>
+            <p class="card-text">Treino funcional de alta intensidade, força e resistência.</p>
             <div class="d-flex justify-content-center gap-2 mb-2">
-              <button class="btn btn-sm btn-info" type="button" data-bs-toggle="collapse" data-bs-target="#collapseCard3" aria-expanded="false" aria-controls="collapseCard3">Mais info</button>
-              <a href="booking.php" class="btn btn-outline-light">Reservar</a>
+              <button class="btn btn-info fw-bold px-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapseCard3" aria-expanded="false" aria-controls="collapseCard3">Saber Mais</button>
+              <a href="/area-reservada/login.php" class="btn btn-outline-warning fw-bold px-3 reservar-btn" style="color:#ff6633; border:2px solid #ff6633; background:none;">Reservar</a>
             </div>
             <div class="collapse text-start mt-2" id="collapseCard3">
-              <p class="small">Aulas dinâmicas para todos os níveis, com professores experientes e ambiente motivador. Experimenta grátis!</p>
+              <p class="small">Aula dinâmica com exercícios variados, ideal para quem procura desafio, força e resistência.</p>
             </div>
           </div>
         </div>
       </div>
-      <!-- Card 4: Musculação -->
+      <!-- Card 4: Aula de Spinning -->
       <div class="col-md-3 col-12">
         <div class="card service-card text-center h-100">
-          <img src="https://images.pexels.com/photos/2261485/pexels-photo-2261485.jpeg?auto=compress&fit=crop&w=600&q=80" class="card-img-top mx-auto mt-3" alt="Musculação" style="width:80px; height:80px; object-fit:cover; border-radius:50%;">
+          <img src="https://images.pexels.com/photos/1552106/pexels-photo-1552106.jpeg?auto=compress&fit=crop&w=600&q=80" class="card-img-top mx-auto mt-3" alt="Aula de Spinning" style="width:90px; height:90px; object-fit:cover; border-radius:50%; border:3px solid #ff6633;">
           <div class="card-body">
-            <h5 class="card-title">Musculação</h5>
-            <p class="card-text">Equipamentos modernos e treino de força.</p>
+            <h5 class="card-title fw-bold">Aula de Spinning</h5>
+            <p class="card-text">Cardio intenso, energia e motivação ao som de música.</p>
             <div class="d-flex justify-content-center gap-2 mb-2">
-              <button class="btn btn-sm btn-info" type="button" data-bs-toggle="collapse" data-bs-target="#collapseCard4" aria-expanded="false" aria-controls="collapseCard4">Mais info</button>
-              <a href="booking.php" class="btn btn-outline-light">Reservar</a>
+              <button class="btn btn-info fw-bold px-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapseCard4" aria-expanded="false" aria-controls="collapseCard4">Saber Mais</button>
+              <a href="/area-reservada/login.php" class="btn btn-outline-warning fw-bold px-3 reservar-btn" style="color:#ff6633; border:2px solid #ff6633; background:none;">Reservar</a>
             </div>
             <div class="collapse text-start mt-2" id="collapseCard4">
-              <p class="small">Zona de musculação equipada com máquinas topo de gama, pesos livres e acompanhamento técnico.</p>
+              <p class="small">Aula de ciclismo indoor, motivadora, ideal para queimar calorias e melhorar a resistência cardiovascular.</p>
             </div>
           </div>
         </div>
@@ -191,6 +189,14 @@ include 'includes/header.php'; // Inclui o header global (menu, Bootstrap, iníc
     </div>
   </div>
 </section>
+<style>
+  .reservar-btn:hover, .reservar-btn:focus {
+    background: none !important;
+    color: #ff6633 !important;
+    border: 2px solid #ff6633 !important;
+    box-shadow: none !important;
+  }
+</style>
 <!-- Fim dos cards com expand/collapse -->
 
 <!-- SECÇÃO DE DESTAQUE: APP MÓVEL & RINGUE DE COMBATE (INSPIRADO NA REFERÊNCIA) -->
@@ -309,6 +315,7 @@ include 'includes/header.php'; // Inclui o header global (menu, Bootstrap, iníc
         <h2 class="fw-bold mb-2" style="font-family:'Poppins',sans-serif; color:#133; font-size:2.3rem; text-transform:uppercase;">Vantagens e Descontos a Pensar em Ti</h2>
         <div style="width:40px; height:4px; background:#ffd600; margin:0 auto 1.5rem auto;"></div>
         <p class="lead" style="color:#1a2b2b; font-size:1.2rem;">Já fazes parte da Tribo Maia GYM? Temos vantagens e descontos exclusivos.</p>
+        <a href="contact.php" class="btn btn-warning fw-bold text-white" style="background:#ff6633; border:none;">QUERO FAZER PARTE</a>
       </div>
     </div>
   </div>

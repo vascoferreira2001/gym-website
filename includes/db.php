@@ -16,9 +16,11 @@ $pass = "BDUqh8afi@2kvn*1"; // Password do utilizador
 $dbname = "maiagym";      // Nome da base de dados
 
 // Criar ligação MySQL
+// Criar ligação MySQL
 $conn = @new mysqli($host, $user, $pass, $dbname);
-if ($conn->connect_error) {
-    // Se falhar, $conn fica a null
+if ($conn && !$conn->connect_error) {
+    $conn->set_charset('utf8mb4');
+} else {
     $conn = null;
 }
 // Caso chegue aqui, a ligação foi bem-sucedida (ou $conn é null)
