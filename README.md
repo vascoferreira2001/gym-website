@@ -1,6 +1,8 @@
 
 # Maia GYM — Website de Ginásio (Projeto Académico)
 
+# Website -  https://maiagym.cybercore.pt/   
+
 ## Descrição geral
 
 O Maia GYM é um website de ginásio moderno, desenvolvido como projeto académico, que simula a presença digital de um ginásio real. O projeto utiliza:
@@ -14,14 +16,15 @@ O Maia GYM é um website de ginásio moderno, desenvolvido como projeto académi
 ## Funcionalidades completas da plataforma Maia GYM
 
 ### Funcionalidades públicas (acesso sem login)
-- Visualização da homepage com carousel de 4 imagens e cards de serviços (com botão expand/collapse)
+- Visualização da página inicial com carrossel de 4 imagens e cartões de serviços (com botão expandir/recolher)
 - Consulta de informações institucionais (Sobre Nós)
 - Visualização da galeria de imagens do ginásio
-- Consulta de contactos e envio de mensagens pelo formulário de contacto (com validação JS)
+- Consulta de contactos e envio de mensagens pelo formulário de contacto (com validação em JS)
 - Consulta de horários e modalidades de aulas (página de aulas marcadas)
 - Links rápidos para redes sociais e navegação intuitiva
 
 ### Funcionalidades de marcação e contacto
+- Marcação de aulas (Personal Trainer, Nutrição, Aulas de Grupo, Musculação) via formulário
 - Validação de todos os campos dos formulários em tempo real (JS)
 - Feedback visual de erros e sucesso nos formulários
 
@@ -47,7 +50,7 @@ O Maia GYM é um website de ginásio moderno, desenvolvido como projeto académi
 ### Segurança e boas práticas
 - Proteção de páginas reservadas por sessão PHP
 - Validação de dados no frontend (JS) e backend (PHP)
-- Passwords encriptadas na base de dados
+- Palavras-passe encriptadas na base de dados
 
 ### area-reservada/
 
@@ -95,17 +98,16 @@ Página institucional com a história, missão e valores do Maia GYM. Inclui tex
 
 - **Gestor:**
     - Email: `gestor@gym.com`
-    - Password: `123456`
+    - Palavra-passe: `123456`
 
 - **Personal Trainer:**
     - Email: `pt@gym.com`
-    - Password: `123456`
+    - Palavra-passe: `123456`
 
 - **Cliente:**
     - Email: `cliente@gym.com`
-    - Password: `123456`
+    - Palavra-passe: `123456`
 
-**insert.php**: Formulário para inserir novas aulas (classes) na base de dados.
 
 ## Observações finais
 

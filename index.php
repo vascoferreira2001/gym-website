@@ -19,9 +19,8 @@ include 'includes/header.php'; // Inclui o header global (menu, Bootstrap, iníc
 
 
 <!-- ============================= -->
-<!-- CAROUSEL SWIPER PREMIUM (4 slides)
-     Carousel principal da homepage, com 4 slides ilustrativos dos serviços do ginásio.
-     Utiliza Swiper.js para navegação, autoplay e responsividade.
+<!-- SLIDE SWIPER PREMIUM (4 slides)
+     SLIDE principal da homepage, com 4 slides ilustrativos dos serviços do ginásio.
      Cada slide tem imagem de fundo, título, descrição e botão de ação.
 -->
 <!-- Swiper CSS (carregado via CDN) -->

@@ -5,7 +5,7 @@
  * ============================================================
  * - Mostra funcionalidades diferentes consoante o papel do utilizador
  * - Gestor: acesso total (admin)
- * - Personal Trainer: gestão de aulas e sócios
+ * - Personal Trainer: gestão de aulas
  * - Cliente: ver e cancelar reservas
  * ============================================================
  */
@@ -62,7 +62,6 @@ if ($user_role === 'cliente' && isset($_GET['cancelar']) && is_numeric($_GET['ca
             <a href="ver_clientes.php" class="btn btn-outline-secondary">Ver Clientes</a>
             <a href="ver_personal_trainers.php" class="btn btn-outline-secondary">Ver Personal Trainers</a>
         </div>
-        <!-- Outras funcionalidades de gestão podem ser adicionadas aqui -->
     <?php elseif ($user_role === 'personal_trainer'): ?>
         <!-- DASHBOARD PERSONAL TRAINER: gestão de aulas e sócios -->
         <div class="alert alert-info mb-4">Bem-vindo, Personal Trainer! Pode criar aulas, ver inscrições e gerir sócios.</div>

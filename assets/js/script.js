@@ -4,7 +4,7 @@
 // ============================================================
 
 // Mensagem de carregamento do site (debug)
-console.log("GoGym website carregado.");
+console.log("MaiaGym website carregado.");
 
 /**
  * Valida os campos de um formulário de contacto ou reserva.

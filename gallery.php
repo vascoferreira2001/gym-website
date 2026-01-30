@@ -29,7 +29,7 @@ include 'includes/header.php'; // Inclui o menu e o layout inicial
         <!-- Imagem 1 -->
         <div class="col-lg-3 col-md-4 col-12">
             <div class="card shadow-sm border-0 h-100">
-                <img src="/assets/images/gallery/1.png"
+                <img src="/assets/images/maiagym-1.webp"
                      class="card-img-top rounded-3"
                      alt="Ginásio Maia GYM 1">
                 <div class="card-body text-center">
@@ -40,7 +40,7 @@ include 'includes/header.php'; // Inclui o menu e o layout inicial
         <!-- Imagem 2 -->
         <div class="col-lg-3 col-md-4 col-12">
             <div class="card shadow-sm border-0 h-100">
-                <img src="/assets/images/gallery/2.png"
+                <img src="/assets/images/maiagym-2.webp"
                      class="card-img-top rounded-3"
                      alt="Ginásio Maia GYM 2">
                 <div class="card-body text-center">
@@ -51,7 +51,7 @@ include 'includes/header.php'; // Inclui o menu e o layout inicial
         <!-- Imagem 3 -->
         <div class="col-lg-3 col-md-4 col-12">
             <div class="card shadow-sm border-0 h-100">
-                <img src="/assets/images/gallery/3.png"
+                <img src="/assets/images/maiagym-3.webp"
                      class="card-img-top rounded-3"
                      alt="Ginásio Maia GYM 3">
                 <div class="card-body text-center">
@@ -62,7 +62,7 @@ include 'includes/header.php'; // Inclui o menu e o layout inicial
         <!-- Imagem 4 -->
         <div class="col-lg-3 col-md-4 col-12">
             <div class="card shadow-sm border-0 h-100">
-                <img src="/assets/images/gallery/4.png"
+                <img src="/assets/images/maiagym-4.webp"
                      class="card-img-top rounded-3"
                      alt="Ginásio Maia GYM 4">
                 <div class="card-body text-center">
