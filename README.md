@@ -1,7 +1,6 @@
 
 # Maia GYM — Website de Ginásio (Projeto Académico)
 
-
 ## Descrição geral
 
 O Maia GYM é um website de ginásio moderno, desenvolvido como projeto académico, que simula a presença digital de um ginásio real. O projeto utiliza:
@@ -23,88 +22,97 @@ O Maia GYM é um website de ginásio moderno, desenvolvido como projeto académi
 - Links rápidos para redes sociais e navegação intuitiva
 
 ### Funcionalidades de marcação e contacto
-- Marcação de aulas (Personal Trainer, Nutrição, Aulas de Grupo, Musculação) via formulário
 - Validação de todos os campos dos formulários em tempo real (JS)
 - Feedback visual de erros e sucesso nos formulários
 
-### Autenticação e perfis de utilizador
-- Login por email ou identificador único
-- Logout seguro (destruição de sessão)
-- Redirecionamento automático para a área reservada correta consoante o perfil
-- Perfis suportados: administrador, gestor de clientes, professor, personal trainer, sócio, cliente
+### Área reservada do gestor de ginásio
+ - Dashboard com resumo e navegação rápida
+ - Gestão de aulas (criar, editar, eliminar)
+ - Gestão de personal trainers (criar, editar, eliminar)
+ - Gestão de clientes (criar, editar, eliminar)
+ - Gestão de marcações de aulas
+ - Gestão de mensagens de contacto
+ -  Utilização de Bootstrap 5 via CDN para performance
 
-### Área reservada do administrador (admin)
-- Dashboard com resumo e navegação rápida
-- Listagem dinâmica de aulas, marcações e contactos
-- Inserção de novas aulas (formulário com validação)
-- Edição de aulas existentes
-- Remoção de aulas, marcações e contactos (com confirmação)
-- Visualização de todos os contactos recebidos
-- Gestão de utilizadores (dependendo do perfil)
+### Área reservada do personal trainer
+ - Criação de novas aulas
+ - Listagem das suas aulas
+ - Consulta de inscrições nas suas aulas
 
-### Área reservada do professor/personal trainer
-- Criação/marcação de novas aulas (com data, hora, sala)
-- Listagem de todas as aulas criadas
-- Visualização do número de inscritos em cada aula
-- Consulta dos dados dos sócios inscritos em cada aula
-- Criação de contas de sócio (com geração automática de identificador)
-
-### Área reservada do sócio/cliente
-- Visualização de aulas disponíveis para inscrição (a implementar)
-- Inscrição em aulas (máximo de 20 inscrições por aula, a implementar)
-- Consulta das suas próprias marcações (a implementar)
-
-### Funcionalidades técnicas e extras
-- Validação de todos os formulários em JavaScript (contacto, booking, inserção de aulas, etc)
-- Layout totalmente responsivo (mobile, tablet, desktop)
-- Utilização de Bootstrap 5 via CDN para performance
-- Código comentado em pt-PT em todos os ficheiros (PHP, JS, CSS)
-- Estrutura modular e organizada (includes, admin, área reservada, assets)
-- Scripts SQL para criação e povoamento da base de dados
-- Possibilidade de expansão para novas funcionalidades (ex: upload de imagens, notificações, pagamentos, etc)
-
-### Fluxos de navegação possíveis
-- Visitante → Explora o site → Marca aula/contacta → (opcional) regista-se/entra
-- Admin → Login → Gestão total de aulas, marcações, contactos e utilizadores
-- Professor → Login → Cria aulas, consulta inscrições, cria sócios
-- Sócio → Login → Consulta aulas disponíveis, inscreve-se, consulta marcações
+### Área reservada do cliente
+ - Marcação de aulas
+ - Consulta e cancelamento das suas marcações
+ - Sócio → Login → Consulta aulas disponíveis, inscreve-se, consulta marcações
 
 ### Segurança e boas práticas
 - Proteção de páginas reservadas por sessão PHP
 - Validação de dados no frontend (JS) e backend (PHP)
 - Passwords encriptadas na base de dados
+
+### area-reservada/
+
+**dashboard.php**: Dashboard dinâmico para gestor, personal trainer e cliente.
+**gerir_aulas.php**: Gestão de aulas (listar, editar, eliminar).
+**criar_aula.php**: Criar nova aula.
+**editar_aula.php**: Editar aula existente.
+**ver_personal_trainers.php**: Listar, criar, editar e eliminar personal trainers.
+**editar_pt.php**: Editar dados de personal trainer.
+**ver_clientes.php**: Listar, criar, editar e eliminar clientes.
+**editar_cliente.php**: Editar dados de cliente.
+**mensagens_contacto.php**: Gestão de mensagens de contacto.
+**marcar_aula.php**: Processamento da marcação de aula pelo cliente.
+**registar.php**: Registo de novos clientes.
+**recuperar.php**: Recuperação de password.
+**login.php**: Login para área reservada.
 - Redirecionamento seguro após login/logout
 
 ---
 
 
+Permitem a autenticação de utilizadores (gestor, personal trainer, cliente). O login direciona para a área reservada conforme o perfil do utilizador.
 
 ## O que faz cada página
 
-### index.php (Homepage)
-Página inicial do site. Apresenta um carousel com 4 imagens de destaque, cards de serviços com botão expand/collapse para mais informações, e links rápidos para marcação de aulas. É o ponto de entrada e mostra o que o ginásio oferece.
+### assets/
+**css/style.css**: Estilos personalizados do site, com comentários por secção.
+**js/script.js**: JS único do projeto, com validações, interações e comentários detalhados.
+**images/**: Imagens do ginásio e galeria (inclui pasta gallery/ com imagens reais).
 
-### about.php (Sobre Nós)
+### sql/
+**maia_gym_full.sql**: Script SQL para criar todas as tabelas e inserir dados de exemplo (inclui utilizadores de teste, aulas e bookings).
 Página institucional com a história, missão e valores do Maia GYM. Inclui texto descritivo e imagens ilustrativas, além de um botão para contactar o ginásio.
 
-### gallery.php (Galeria)
-Mostra uma galeria de imagens reais do ginásio, organizada em cards responsivos. Permite aos visitantes conhecerem o espaço e as atividades.
+## Organização do JavaScript e CSS
 
-### booking.php (Marcação de Aulas)
-Formulário para marcação de aulas (Personal Trainer, Nutrição, Aulas de Grupo, Musculação). Os dados são validados em JS e enviados para a base de dados. Apenas utilizadores autenticados podem aceder.
+- **assets/js/script.js**: ficheiro único JS, com comentários detalhados. Inclui:
+    - Validação de formulários (contacto, marcação de aulas, registo)
+    - Inicialização de carousels (caso existam)
+    - Pode ser expandido para outras interações globais
+- **assets/css/style.css**: todos os estilos customizados, organizados por secção (navbar, hero, cards, etc), com comentários.
+7. Faça login como gestor, personal trainer ou cliente para aceder à área reservada.
 
-### contact.php (Contacte-nos)
-Formulário de contacto para envio de mensagens ao ginásio. Inclui validação de campos e feedback ao utilizador.
+## Credenciais de Teste
 
-### login.php / logout.php
-Permitem a autenticação de utilizadores (admin, professores, sócios, etc). O login direciona para a área reservada conforme o perfil do utilizador.
+- **Gestor:**
+    - Email: `gestor@gym.com`
+    - Password: `123456`
 
-### admin/
-**index.php**: Dashboard do administrador, com acesso rápido às principais funcionalidades de gestão.
-**list.php**: Listagem de aulas, marcações e contactos, com opções de editar e remover.
+- **Personal Trainer:**
+    - Email: `pt@gym.com`
+    - Password: `123456`
+
+- **Cliente:**
+    - Email: `cliente@gym.com`
+    - Password: `123456`
+
 **insert.php**: Formulário para inserir novas aulas (classes) na base de dados.
-**edit.php**: Permite editar os dados de uma aula existente.
-**delete.php**: Confirmação e remoção de aulas, marcações ou contactos.
+
+## Observações finais
+
+- Todo o código está comentado detalhadamente (PHP, JS, CSS e HTML) para facilitar a avaliação académica, conforme solicitado no enunciado do projeto.
+- O projeto segue as melhores práticas de responsividade, acessibilidade e organização de ficheiros.
+- Estrutura modular, navegação intuitiva e funcionalidades completas para cada perfil.
+- Qualquer dúvida ou sugestão, contactar o autor.
 
 ### area-reservada/
 Páginas reservadas a professores e sócios, com funcionalidades específicas para cada perfil (ex: ver marcações, gerir aulas).
@@ -122,42 +130,6 @@ Páginas reservadas a professores e sócios, com funcionalidades específicas pa
 ### sql/
 **maia_gym_full.sql**: Script SQL para criar todas as tabelas e inserir dados de exemplo.
 
-```text
-gym-website/
-│
-├── index.php          # Homepage (carousel, cards de serviços)
-├── about.php          # Página "Sobre Nós"
-├── gallery.php        # Galeria de imagens responsiva
-├── booking.php        # Formulário de marcação de aulas
-├── contact.php        # Formulário de contacto
-│
-├── login.php, logout.php   # Autenticação de utilizadores
-│
-├── admin/
-│   ├── index.php      # Dashboard do administrador
-│   ├── list.php       # Listagem dinâmica (classes, bookings, contacts)
-│   ├── insert.php     # Inserir nova aula (classes)
-│   ├── edit.php       # Editar aula (classes)
-│   ├── delete.php     # Apagar aulas/bookings/contacts
-│
-├── area-reservada/    # Páginas reservadas a professores/sócios
-│
-├── includes/
-│   ├── header.php     # Header global (menu, Bootstrap, início do HTML)
-│   ├── footer.php     # Footer global (scripts JS, fecho do HTML)
-│   ├── db.php         # Ligação à base de dados MySQL
-│
-├── assets/
-│   ├── css/
-│   │   └── style.css  # Estilos personalizados (tema, responsividade)
-│   ├── js/
-│   │   └── script.js  # JS único do projeto (validações, interações)
-│   ├── images/        # Imagens do ginásio e galeria
-│
-└── sql/
-    ├── maia_gym_full.sql      # Criação das tabelas e dados de exemplo
-```
-
 
 ## Organização do JavaScript e CSS
 
@@ -166,18 +138,6 @@ gym-website/
     - Inicialização de carousels (caso existam)
     - Pode ser expandido para outras interações globais
 - **assets/css/style.css**: todos os estilos customizados, organizados por secção (navbar, hero, cards, etc), com comentários.
-
-## Como correr o projeto localmente
-
-
-1. Clone ou copie o projeto para a sua máquina local.
-2. Coloque as imagens e recursos na pasta `assets`.
-3. Importe o ficheiro `sql/maia_gym_full.sql` para criar as tabelas e dados de exemplo no MySQL.
-4. Edite o ficheiro `includes/db.php` com os dados da sua base de dados local.
-5. Abra o projeto num servidor local (XAMPP, WAMP, LAMP, MAMP, etc).
-6. Aceda a `http://localhost/gym-website` no browser.
-7. Faça login como admin para aceder à área reservada.
-
 
 
 ## Credenciais de Teste
